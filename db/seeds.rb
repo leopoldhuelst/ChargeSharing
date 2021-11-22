@@ -14,12 +14,12 @@ puts 'generating data'
     last_name: Faker::Name.last_name,
     birthdate: Faker::Date.birthday(min_age: 18, max_age: 80),
     gender: ['male', 'female'].sample,
-    plug_type: rand(1..2).to_s,
+    plug_type: rand(1..2),
     email: Faker::Internet.email,
     password: "123456"
   )
   plug = Plug.create!(
-    plug_type: rand(1..2).to_s,
+    plug_type: rand(1..2),
     location: Faker::Address.full_address,
     availability: Faker::Date.between(from: '2020-03-17', to: '2021-11-11'),
     description: Faker::Lorem.paragraph,
