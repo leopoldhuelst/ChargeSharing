@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2021_11_22_140324) do
   end
 
   create_table "plugs", force: :cascade do |t|
-    t.string "plug_type"
+    t.integer "plug_type"
     t.string "location"
     t.datetime "availability"
     t.text "description"
@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 2021_11_22_140324) do
     t.string "last_name"
     t.date "birthdate"
     t.string "gender"
-    t.string "plug_type"
+    t.integer "plug_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
