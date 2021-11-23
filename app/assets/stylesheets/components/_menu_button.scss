@@ -1,0 +1,44 @@
+.container {
+  height: auto;
+  width: auto;
+  display: inline-block;
+  // cursor: pointer;
+  // border: 3px solid black;
+  position: fixed;
+  top: 81%;
+  left: 73%;
+  border-radius: 45px;
+  background-color: $default-red;
+  padding: 10px 14px;
+  transition: 0.4s;
+  box-shadow: 3px 3px 3px grey;
+}
+
+.container.change-button {
+  transition: 0.4s;
+  background-color: white;
+  // box-shadow: inset 3px 3px 3px grey;
+}
+
+.bar1, .bar2, .bar3 {
+  width: 18px;
+  height: 3px;
+  background-color: white;
+  margin: 4px 0;
+  transition: 0.6s;
+  border-radius: 4px;
+}
+
+.change-bars .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-9px, 5px);
+  transform: rotate(-45deg) translate(-5px, 4.5px);
+  background-color: $dark-red;
+}
+
+.change-bars .bar2 {opacity: 0;}
+
+.change-bars .bar3 {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-5px, -5px);
+  background-color: $dark-red;
+}
