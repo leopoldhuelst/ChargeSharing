@@ -5,17 +5,19 @@
   // cursor: pointer;
   // border: 3px solid black;
   position: fixed;
-  top: 550px;
-  left: 267px;
+  top: 81%;
+  left: 73%;
   border-radius: 45px;
   background-color: $default-red;
   padding: 10px 14px;
   transition: 0.4s;
+  box-shadow: 3px 3px 3px grey;
 }
 
 .container.change-button {
   transition: 0.4s;
   background-color: white;
+  // box-shadow: inset 3px 3px 3px grey;
 }
 
 .bar1, .bar2, .bar3 {
@@ -30,7 +32,7 @@
 .change-bars .bar1 {
   -webkit-transform: rotate(-45deg) translate(-9px, 5px);
   transform: rotate(-45deg) translate(-5px, 4.5px);
-  background-color: black;
+  background-color: $dark-red;
 }
 
 .change-bars .bar2 {opacity: 0;}
@@ -38,5 +40,5 @@
 .change-bars .bar3 {
   -webkit-transform: rotate(45deg) translate(-8px, -8px);
   transform: rotate(45deg) translate(-5px, -5px);
-  background-color: black;
+  background-color: $dark-red;
 }
