@@ -3,6 +3,15 @@ class PlugsController < ApplicationController
   end
 
   def index
+    @plugs = Plug.all
+    @markers = @plugs.geocoded.map do |plug|
+      {
+        lat: plug.latitude,
+        lng: plug.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { plug: plug })
+
+      }
+    end
   end
 
   def new
