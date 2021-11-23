@@ -7,6 +7,6 @@ export default class extends Controller {
     this.buttonTarget.classList.toggle("change-button")
     this.buttonTarget.classList.toggle("change-bars")
     // this.menuTextTarget.classList.toggle("d-none")
-    this.menuContentTarget.classList.toggle("move")
+    // this.menuContentTarget.classList.toggle("move")
   }
 }
