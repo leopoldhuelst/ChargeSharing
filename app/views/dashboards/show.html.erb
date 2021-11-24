@@ -1,0 +1,102 @@
+<div id="tab-headers">
+  <div id="tab-1" onclick="tabOne()" class="select">
+    <h4>HOME</h4>
+  </div>
+  <div id="tab-2" onclick="tabTwo()">
+    <h4>REVIEWS</h4>
+  </div>
+  <div id="tab-3" onclick="tabThree()">
+    <h4>BOOKINGS</h4>
+  </div>
+</div>
+
+
+<%# tab HTML's %>
+
+<%# home tab HTML%>
+
+<div id="tab-1-content" class="home-dashboard select">
+  <div class="profile">
+    <div id="profile-picture-name-gender">
+      <i class="fas fa-user-circle"></i>
+        <div>
+          <h2><%= @user.first_name %> <%= @user.last_name %></h2>
+          <h3><%= @user.gender %></h3>
+        </div>
+    </div>
+    <div>
+      <p><i class="fas fa-envelope"></i> <%= @user.email %></p>
+      <p><i class="fas fa-phone"></i> +49 01575 8877956</p>
+    </div>
+    <button>Edit <i class="fas fa-edit"></i></button>
+  </div>
+  <div class="current-alert">
+    <h3>My booking</h3>
+    <p>
+    <ul>
+      <li><%= @current.id %></li>
+      <li><%= @current.date_time %></li>
+      <li><%= @current.duration %></li>
+      <li><%= @current.plug.location%></li>
+    </ul>
+      <button>Write Review <i class="far fa-keyboard"></i></button>
+    </p>
+  </div>
+</div>
+
+
+<%# Reviewstab HTML %>
+
+<div id="tab-2-content">
+  HOME
+</div>
+
+<%# Bookings-tab HTML %>
+
+
+<div id="tab-3-content" class="booking-dashboard">
+  <div id="booking-history">
+    <h3>Booking History</h3>
+    <i class="fas fa-book"></i>
+  </div>
+  <div id="bookings-history">
+    <% @bookings.each do |booking| %>
+      <ul>
+        <li><%= booking.id %></li>
+        <li><%= booking.date_time %></li>
+        <li><%= booking.duration %></li>
+        <li><%= booking.plug.location%></li>
+      </ul>
+    <% end %>
+  </div>
+  <div id="plug-booking-history">
+    <h3>Plug Booking History</h3>
+    <i class="fas fa-charging-station"></i>
+  </div>
+  <div>
+    <% @user.plugs.each do |plug| %>
+      <% plug.bookings.each do |booking| %>
+        <ul>
+          <li><%= booking.user.first_name %> <%= booking.user.last_name %></li>
+          <li><%= booking.date_time %></li>
+          <li><%= booking.duration %></li>
+        </ul>
+      <% end %>
+    <% end %>
+    <br>
+<br>
+<br>
+<br><br>
+<br>
+<br>
+<br><br>
+<br>
+<br>
+<br>
+  </div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
