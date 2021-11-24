@@ -1,6 +1,8 @@
 <div class='info-window'>
-  <h1 id="info-window-header">CHARGER DETAILS</h1>
-  <p id="info-window-text">PLUG TYPE: <%= plug.plug_type %></p>
-  <p>COST: <%= plug.fixed_cost_per_15_min %></p>
-  <p>DESCRIPTION: <%= plug.description %></p>
+  <div class="info-window-text">
+    <p>PLUG TYPE: <%= plug.plug_type %></p>
+    <p>COST: <%= plug.fixed_cost_per_15_min %></p>
+    <p>DESCRIPTION: <%= plug.description %></p>
+  </div>
+  <button class="info-window-button">CHARGE NOW</button>
 </div>
