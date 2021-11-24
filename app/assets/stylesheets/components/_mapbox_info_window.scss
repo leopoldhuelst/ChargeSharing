@@ -22,3 +22,11 @@
   margin: 10px;
   font-size: xx-large;
 }
+
+.mapboxgl-ctrl-logo {
+  display: none !important;
+}
+
+.mapboxgl-ctrl.mapboxgl-ctrl-attrib.mapboxgl-compact {
+  display: none !important;
+}
