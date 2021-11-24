@@ -12,7 +12,9 @@ Review.destroy_all
 Booking.destroy_all
 puts 'generating data'
 
-10.times do
+@addresses = ["Brienner Str. 50, München", "Königsplatz 1, München", "Neuhauser Straße 27, München", "Kardinal-Faulhaber-Straße 1, München", "Rosental 9, München", "Hohenzollernstraße 103, 80796 München", "Rosenheimer Str. 90, 81669 München", "Claudius-Keller-Straße 2, 81669 München", "Plinganserstraße 19, 81369 München", "Meglingerstraße 6, 81477 München", "Fürstenrieder Str. 54, 80686 München", "Kapuzinerstraße 8, 80337 München" ]
+
+@addresses.each do |address|
   user = User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -24,7 +26,7 @@ puts 'generating data'
   )
   plug = Plug.create!(
     plug_type: rand(1..2),
-    location: Faker::Address.full_address,
+    location: address,
     availability: Faker::Date.between(from: '2020-03-17', to: '2021-11-11'),
     description: Faker::Lorem.paragraph,
     fixed_cost_per_15_min: rand(1..6),

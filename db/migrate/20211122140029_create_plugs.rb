@@ -1,7 +1,7 @@
 class CreatePlugs < ActiveRecord::Migration[6.0]
   def change
     create_table :plugs do |t|
-      t.integer :plug_type
+      t.string :plug_type
       t.string :location
       t.datetime :availability
       t.text :description
