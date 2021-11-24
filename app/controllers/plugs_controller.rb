@@ -9,7 +9,7 @@ class PlugsController < ApplicationController
         lat: plug.latitude,
         lng: plug.longitude,
         info_window: render_to_string(partial: "info_window", locals: { plug: plug }),
-        image_url: helpers.asset_url('icons8-marker-storm-48.png')
+        image_url: helpers.asset_url('mapmarker.png')
       }
     end
   end
