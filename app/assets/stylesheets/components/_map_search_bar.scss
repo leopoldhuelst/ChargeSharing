@@ -1,5 +1,24 @@
 .mapboxgl-ctrl-geocoder {
-  border-radius: 10px !important;
+  border-radius: 25px !important;
   box-shadow: 5px 5px 15px !important;
 
+}
+
+.mapboxgl-ctrl-top-right {
+  width: 100vw;
+  padding: 1rem;
+}
+
+.mapboxgl-ctrl.mapboxgl-ctrl-group {
+    position: fixed;
+    bottom: 4rem;
+    right: 0.2rem;
+}
+
+.mapboxgl-canvas {
+  width: 100vw !important;
+}
+
+.mapboxgl-ctrl-geocoder.mapboxgl-ctrl {
+  margin: auto !important;
 }
