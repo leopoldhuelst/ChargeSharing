@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
+  root to: 'plugs#index'
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get '/dashboard', to: 'dashboards#show', as: 'dashboard'
   get 'plugs/:id/bookings/approve', to: 'bookings#approve', as: 'bookings_approve'
   resources :plugs, only: [:index] do
     resources :bookings, only: [:create, :show]
