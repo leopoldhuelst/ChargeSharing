@@ -2,8 +2,7 @@
   border-radius: 8px;
   padding: 3px;
   padding-top: 50px;
-  margin: 0px 30px 0 30px;
-  background-color: white;
+  margin: 0px 30px 30px 30px;
   background-color: rgb(228, 228, 228);
   color: rgb(114, 114, 114);
   width: calc(100% - 60px);
@@ -30,3 +29,45 @@
   transform: scale(0.8);
   border-inline: 3px solid red;
 }
+
+#profile-edit-button {
+  // position: absolute;
+  display: block;
+  transition: 0.6s;
+
+}
+
+#profile-edit-button.select{
+  // position: absolute;
+  background-color: white;
+  color: $default-red;
+  -webkit-transform: rotate(120deg);
+  transform: rotate(120deg);
+}
+
+#edit-profile-field {
+  padding: 3px;
+  padding-top: 50px;
+  margin: 0px 30px 0 30px;
+  border-radius: 8px;
+  padding: 30px;
+  background-color: white;
+  color: rgb(114, 114, 114);
+  border: 3px solid $default-red;
+  opacity: 1;
+  transition: opacity 1s;
+}
+
+// #edit-profile-field.hide {
+//   transition: opacity 0s;
+//   height: 3px;
+//   margin: 0;
+//   padding: 0;
+//   opacity: 0;
+//   -webkit-touch-callout: none; /* iOS Safari */
+//     -webkit-user-select: none; /* Safari */
+//      -khtml-user-select: none; /* Konqueror HTML */
+//        -moz-user-select: none; /* Old versions of Firefox */
+//         -ms-user-select: none; /* Internet Explorer/Edge */
+//             user-select: none;
+// }
