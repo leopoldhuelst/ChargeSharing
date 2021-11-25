@@ -3,8 +3,9 @@ class DashboardsController < ApplicationController
   end
 
   def show
+    @bookings = policy_scope(current_user.bookings)
     @user = current_user
-    @bookings = @user.bookings
-    @current = @user.bookings.last
+    @current = @bookings.last
+    authorize @current
   end
 end

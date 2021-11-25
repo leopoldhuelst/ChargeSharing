@@ -48,8 +48,12 @@
   <div class="tab-card">
     <h2>Latest booking</h2>
     <ul>
-      <p><%= @current.date_time.strftime('%A, %d %b') %></p>
-      <p><%= @current.date_time.strftime('%l:%M %p') %> - <%=  (@current.date_time + @current.duration.minutes).strftime('%l:%M %p') %></p>
+      <p><%= @current.created_at.strftime('%A, %d %b') %></p>
+      <% if @current.duration %>
+        <p><%= @current.created_at.strftime('%l:%M %p') %> - <%=  (@current.created_at + @current.duration.minutes).strftime('%l:%M %p') %></p>
+      <% else %>
+        <p>Still going...</p>
+      <% end %>
       <p><%= @current.plug.location%></p>
     </ul>
       <h3 class="tab-button">Write Review <i class="far fa-keyboard"></i></h3>
@@ -65,7 +69,7 @@
       <% @user.reviews.each do |review| %>
         <ul>
           <p><%= review.contents %></p>
-          <p><%= review.booking.date_time.strftime('%A, %d %b') %></p>
+          <p><%= review.booking.created_at.strftime('%A, %d %b') %></p>
         </ul>
       <% end %>
   </div>
@@ -81,7 +85,7 @@
               <i class="far fa-star"></i>
             <% end %>
           <p><%= review.contents %></p>
-          <p><%= review.booking.date_time.strftime('%A, %d %b') %></p>
+          <p><%= review.booking.created_at.strftime('%A, %d %b') %></p>
         </ul>
     <% end %>
   </div>
@@ -96,8 +100,12 @@
     <h3>Booking History <i class="fas fa-book"></i></h3>
     <% @bookings.each do |booking| %>
       <ul>
-        <p><%= booking.date_time.strftime('%A, %d %b') %></p>
-        <p><%= booking.date_time.strftime('%l:%M %p') %> - <%=  (booking.date_time + booking.duration.minutes).strftime('%l:%M %p') %></p>
+        <p><%= booking.created_at.strftime('%A, %d %b') %></p>
+        <% if booking.duration %>
+          <p><%= booking.created_at.strftime('%l:%M %p') %> - <%=  (booking.created_at + booking.duration.minutes).strftime('%l:%M %p') %></p>
+        <% else %>
+          <p>Still going...</p>
+        <% end %>
         <p><%= booking.plug.location%></p>
       </ul>
     <% end %>
@@ -108,8 +116,8 @@
       <% plug.bookings.each do |booking| %>
         <ul>
           <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>
-          <p><%= booking.date_time.strftime('%A, %d %b') %></p>
-          <p><%= booking.date_time.strftime('%l:%M %p') %> - <%=  (booking.date_time + booking.duration.minutes).strftime('%l:%M %p') %></p>
+          <p><%= booking.created_at.strftime('%A, %d %b') %></p>
+          <p><%= booking.created_at.strftime('%l:%M %p') %> - <%=  (booking.created_at + booking.duration.minutes).strftime('%l:%M %p') %></p>
         </ul>
       <% end %>
     <% end %>

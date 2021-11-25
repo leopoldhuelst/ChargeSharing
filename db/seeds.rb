@@ -49,7 +49,6 @@ User.create!(
     user: user,
     status: [0, 1].sample,
     duration: rand(1..10),
-    date_time: @dates.sample,
     plug: plug
   )
   [0, 0, 1].each do |number|
@@ -88,7 +87,7 @@ user2 = User.create!(
 plug = Plug.create!(
   plug_type: rand(1..2),
   location: "Bayerstraße 12, München",
-  availability: @dates.sample,
+  availability: [0, 1].sample,
   description: Faker::Lorem.paragraph,
   fixed_cost_per_15_min: rand(1..6),
   user: user2
@@ -97,7 +96,6 @@ booking = Booking.create!(
   user: user1,
   status: [0, 1].sample,
   duration: rand(15..180),
-  date_time: @dates.sample,
   plug: plug
 )
 [0, 0, 1].each do |number|
@@ -112,18 +110,19 @@ end
 plug = Plug.create!(
   plug_type: rand(1..2),
   location: "Bayerstraße 12, München",
-  availability: @dates.sample,
+  availability: [0, 1].sample,
   description: Faker::Lorem.paragraph,
   fixed_cost_per_15_min: rand(1..6),
   user: user1
 )
+
 booking = Booking.create!(
   user: user2,
   status: [0, 1].sample,
   duration: rand(15..180),
-  date_time: @dates.sample,
   plug: plug
 )
+
 [0, 0, 1].each do |number|
   Review.create!(
     rating: rand(1..5),
