@@ -47,7 +47,7 @@ export default class extends Controller {
       this.markersValue.forEach((marker) => {
         const customMarker = document.createElement('div');
         customMarker.className = 'active_marker';
-        customMarker.style.backgroundImage = `url('${marker.active_image_url}')`;
+        customMarker.style.backgroundImage = `url('${marker.booked_image_url}')`;
         customMarker.style.backgroundSize = 'cover';
         customMarker.style.width = '27px';
         customMarker.style.height = '35px';

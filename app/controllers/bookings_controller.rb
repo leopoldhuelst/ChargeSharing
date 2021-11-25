@@ -6,8 +6,7 @@ class BookingsController < ApplicationController
     @marker = [{
       lat: @plug.latitude,
       lng: @plug.longitude,
-      active_image_url: helpers.asset_url('mapmarker.png'),
-      inactive_image_url: helpers.asset_url('icons8-marker-storm-50.png'),
+      booked_image_url: helpers.asset_url('mapmarker.png'),
       availability: @plug.availability
     }]
   end
