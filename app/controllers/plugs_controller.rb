@@ -9,9 +9,12 @@ class PlugsController < ApplicationController
         lat: plug.latitude,
         lng: plug.longitude,
         info_window: render_to_string(partial: "info_window", locals: { plug: plug }),
-        image_url: helpers.asset_url('mapmarker.png')
+        active_image_url: helpers.asset_url('mapmarker.png'),
+        inactive_image_url: helpers.asset_url('icons8-marker-storm-50.png'),
+        availability: plug.availability
       }
     end
+    # raise
   end
 
   def new
