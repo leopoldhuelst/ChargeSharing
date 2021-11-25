@@ -4,5 +4,9 @@
     <p>COST: <%= plug.fixed_cost_per_15_min %></p>
     <p>DESCRIPTION: <%= plug.description %></p>
   </div>
-  <button class="info-window-button"><%= link_to "CHARGE NOW", bookings_approve_path(plug) %></button>
+  <% if plug.availability == 0 %>
+    <button class="info-window-button"><%= link_to "CHARGE NOW", bookings_approve_path(plug) %></button>
+  <% else %>
+    <p>This Charger is currently unavailable</p>
+  <% end %>
 </div>
