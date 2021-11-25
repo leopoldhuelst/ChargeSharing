@@ -27,7 +27,7 @@ puts 'generating data'
   plug = Plug.create!(
     plug_type: rand(1..2),
     location: address,
-    availability: Faker::Date.between(from: '2020-03-17', to: '2021-11-11'),
+    availability: [0, 1].sample,
     description: Faker::Lorem.paragraph,
     fixed_cost_per_15_min: rand(1..6),
     user: user

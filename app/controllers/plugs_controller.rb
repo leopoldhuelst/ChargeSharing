@@ -3,7 +3,7 @@ class PlugsController < ApplicationController
   end
 
   def index
-    @plugs = Plug.all
+    @plugs = policy_scope(Plug)
     @markers = @plugs.geocoded.map do |plug|
       {
         lat: plug.latitude,
@@ -18,6 +18,7 @@ class PlugsController < ApplicationController
   end
 
   def create
+    authorize @plug
   end
 
   def edit
