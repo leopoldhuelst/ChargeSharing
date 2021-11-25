@@ -11,14 +11,14 @@
   background-color: $default-red;
   padding: 10px 14px;
   transition: 0.4s;
-  box-shadow: 3px 3px 3px grey;
+  // box-shadow: 3px 3px 3px grey;
   z-index: 2;
 }
 
 .container.change-button {
   transition: 0.4s;
   background-color: white;
-  box-shadow: none;
+  // box-shadow: none;
 }
 
 .bar1, .bar2, .bar3 {
