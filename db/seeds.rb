@@ -13,7 +13,7 @@ Booking.destroy_all
 puts 'generating data'
 
 @addresses = ["Brienner Str. 50, München", "Königsplatz 1, München", "Neuhauser Straße 27, München", "Kardinal-Faulhaber-Straße 1, München", "Rosental 9, München", "Hohenzollernstraße 103, 80796 München", "Rosenheimer Str. 90, 81669 München", "Claudius-Keller-Straße 2, 81669 München", "Plinganserstraße 19, 81369 München", "Meglingerstraße 6, 81477 München", "Fürstenrieder Str. 54, 80686 München", "Kapuzinerstraße 8, 80337 München" ]
-
+@dates = ["2021-11-25", "2021-10-23", "2021-11-01", "2021-11-18", "2021-09-27", "2021-10-13", "2021-10-30", "2021-11-12", "2021-11-09", "2021-11-14"]
 User.create!(
   first_name: "Joe",
   last_name: "Mama",
@@ -39,7 +39,7 @@ User.create!(
   plug = Plug.create!(
     plug_type: rand(1..2),
     location: address,
-    availability: Faker::Date.between(from: '2020-03-17', to: '2021-11-11'),
+    availability: @dates.sample,
     description: Faker::Lorem.paragraph,
     fixed_cost_per_15_min: rand(1..6),
     user: users[@index]
@@ -49,7 +49,7 @@ User.create!(
     user: user,
     status: [0, 1].sample,
     duration: rand(1..10),
-    date_time: Faker::Date.between(from: '2020-03-17', to: '2021-11-11'),
+    date_time: @dates.sample,
     plug: plug
   )
   [0, 0, 1].each do |number|
@@ -88,7 +88,7 @@ user2 = User.create!(
 plug = Plug.create!(
   plug_type: rand(1..2),
   location: "Bayerstraße 12, München",
-  availability: Faker::Date.between(from: '2020-03-17', to: '2021-11-11'),
+  availability: @dates.sample,
   description: Faker::Lorem.paragraph,
   fixed_cost_per_15_min: rand(1..6),
   user: user2
@@ -96,8 +96,8 @@ plug = Plug.create!(
 booking = Booking.create!(
   user: user1,
   status: [0, 1].sample,
-  duration: rand(1..10),
-  date_time: Faker::Date.between(from: '2020-03-17', to: '2021-11-11'),
+  duration: rand(15..180),
+  date_time: @dates.sample,
   plug: plug
 )
 [0, 0, 1].each do |number|
@@ -112,7 +112,7 @@ end
 plug = Plug.create!(
   plug_type: rand(1..2),
   location: "Bayerstraße 12, München",
-  availability: Faker::Date.between(from: '2020-03-17', to: '2021-11-11'),
+  availability: @dates.sample,
   description: Faker::Lorem.paragraph,
   fixed_cost_per_15_min: rand(1..6),
   user: user1
@@ -120,8 +120,8 @@ plug = Plug.create!(
 booking = Booking.create!(
   user: user2,
   status: [0, 1].sample,
-  duration: rand(1..10),
-  date_time: Faker::Date.between(from: '2020-03-17', to: '2021-11-11'),
+  duration: rand(15..180),
+  date_time: @dates.sample,
   plug: plug
 )
 [0, 0, 1].each do |number|
