@@ -116,12 +116,14 @@
     <% @user.reviews_as_owner.each do |review| %>
     <div class="tab-content-separator"></div>
     <% num = review.rating.to_i %>
-      <% num.times do %>
-        <i class="fas fa-star small "></i>
-      <% end %>
-      <% (5-num).times do %>
-        <i class="far fa-star small "></i>
-      <% end %>
+      <p>
+        <% num.times do %>
+          <i class="fas fa-star small "></i>
+        <% end %>
+        <% (5-num).times do %>
+          <i class="far fa-star small "></i>
+        <% end %>
+      </p>
       <p><%= review.contents %></p>
       <p><%= review.booking.date_time.strftime('%A, %d %b') %></p>
     <% end %>
