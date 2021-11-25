@@ -31,7 +31,15 @@ export default class extends Controller {
         // Draw an arrow next to the location dot to indicate which direction the device is heading.
         showUserHeading: true
       })
-    );
+      );
+    // this.markersValue.forEach((marker) => {
+    //   marker.getElement.addEventListener((event) => {
+    //     console.log(event.currentTarget)
+    //   })
+      // marker.addEventListener("click", (event) => {
+      //   console.log(event.currentTarget)
+      // })
+    // })
 
   }
   _addMarkersToMap() {
@@ -48,6 +56,9 @@ export default class extends Controller {
         .setLngLat([marker.lng, marker.lat])
         .setPopup(popup)
         .addTo(this.map)
+        // .addEventListener("click", (event) => {
+        //   console.log("hello")
+        // });
     });
   }
   _fitMapToMarkers() {
