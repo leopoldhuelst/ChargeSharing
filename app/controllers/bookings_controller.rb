@@ -1,22 +1,25 @@
 class BookingsController < ApplicationController
   def show
-  end
-
-  def new
+    @booking = Booking.find(params[:id])
+    authorize @booking
   end
 
   def create
-  end
+    @plug = Plug.find(params[:plug_id])
+    @booking = Booking.new(status: 0)
+    authorize @booking
+    @booking.user = current_user
+    @booking.plug = @plug
 
-  def destroy
-  end
-
-  def edit
-  end
-
-  def update
+    if @booking.save
+      redirect_to plug_booking_path(@plug, @booking)
+    else
+      render :new
+    end
   end
 
   def approve
+    @plug = Plug.find(params[:id])
+    authorize @plug
   end
 end

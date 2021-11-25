@@ -39,7 +39,7 @@ User.create!(
   plug = Plug.create!(
     plug_type: rand(1..2),
     location: address,
-    availability: @dates.sample,
+    availability: [0, 1].sample,
     description: Faker::Lorem.paragraph,
     fixed_cost_per_15_min: rand(1..6),
     user: users[@index]

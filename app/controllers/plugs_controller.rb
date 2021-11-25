@@ -3,13 +3,13 @@ class PlugsController < ApplicationController
   end
 
   def index
-    @plugs = Plug.all
+    @plugs = policy_scope(Plug)
     @markers = @plugs.geocoded.map do |plug|
       {
         lat: plug.latitude,
         lng: plug.longitude,
-        info_window: render_to_string(partial: "info_window", locals: { plug: plug })
-
+        info_window: render_to_string(partial: "info_window", locals: { plug: plug }),
+        image_url: helpers.asset_url('mapmarker.png')
       }
     end
   end
@@ -18,6 +18,7 @@ class PlugsController < ApplicationController
   end
 
   def create
+    authorize @plug
   end
 
   def edit
