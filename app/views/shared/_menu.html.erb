@@ -1,7 +1,22 @@
 <div id="javadiv-menu" data-controller="menu-slider">
   <div id="menu" data-menu-slider-target="menu">
     <div class="content" data-menu-slider-target="menuText">
-      <h2>MENU</h2>
+      <div>
+        <h2>Charge<br>Sharing</h2>
+        <div class="content-separator"></div>
+        <%= link_to 'FIND CHARGER', root_path %>
+        <br>
+        <%= link_to 'MY PROFILE', dashboard_path %>
+        <br>
+        <%= link_to 'MY CHARGER', dashboard_path %>
+      </div>
+      <div class="content-separator"></div>
+      <div class="footer-links">
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+      </div>
     </div>
   </div>
 
