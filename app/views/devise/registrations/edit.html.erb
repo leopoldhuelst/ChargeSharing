@@ -107,6 +107,15 @@
     <h3>Written Reviews <i class="fas fa-paper-plane"></i></h3>
       <% @user.reviews.each do |review| %>
         <div class="tab-content-separator"></div>
+        <% num = review.rating.to_i %>
+        <p>
+          <% num.times do %>
+            <i class="fas fa-star small "></i>
+          <% end %>
+          <% (5-num).times do %>
+            <i class="far fa-star small "></i>
+          <% end %>
+        </p>
         <p><%= review.contents %></p>
         <p><%= review.booking.date_time.strftime('%A, %d %b') %></p>
       <% end %>
@@ -114,8 +123,8 @@
   <div class="tab-card">
     <h3>Received Reviews <i class="fas fa-mail-bulk"></i></h3>
     <% @user.reviews_as_owner.each do |review| %>
-    <div class="tab-content-separator"></div>
-    <% num = review.rating.to_i %>
+      <div class="tab-content-separator"></div>
+      <% num = review.rating.to_i %>
       <p>
         <% num.times do %>
           <i class="fas fa-star small "></i>
