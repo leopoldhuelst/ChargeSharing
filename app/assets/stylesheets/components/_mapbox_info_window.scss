@@ -22,3 +22,55 @@
   margin: 10px;
   font-size: xx-large;
 }
+
+.mapboxgl-ctrl-logo {
+  display: none !important;
+}
+
+.mapboxgl-ctrl.mapboxgl-ctrl-attrib.mapboxgl-compact {
+  display: none !important;
+}
+
+.mapboxgl-ctrl-geolocate {
+  color: red !important;
+}
+
+//.mapboxgl-ctrl-icon {
+  //border-radius: 25px;
+//}
+
+.mapboxgl-ctrl.mapboxgl-ctrl-group {
+  border-radius: 25px;
+  background-color: #6EDE5C;
+}
+
+.mapboxgl-canvas-container.mapboxgl-interactive.mapboxgl-touch-drag-pan.mapboxgl-touch-zoom-rotate {
+  transform:none !important;
+}
+
+.mapboxgl-popup{
+    transform:none !important;
+    position: absolute;
+}
+
+.mapboxgl-popup-anchor-top .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-center .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-left .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-right .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-bottom-right .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-bottom-left .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-top-right .mapboxgl-popup-tip,
+.mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip{
+    display:none !important;
+    transform:none !important;
+}
+
+.mapboxgl-canvas {
+  position: relative;
+  transform:none !important;
+}
+
+.mapboxgl-popup.mapboxgl-popup-anchor-bottom {
+  transform:none !important;
+}
