@@ -4,5 +4,5 @@
     <p>COST: <%= plug.fixed_cost_per_15_min %></p>
     <p>DESCRIPTION: <%= plug.description %></p>
   </div>
-  <button class="info-window-button">CHARGE NOW</button>
+  <button class="info-window-button"><%= link_to "CHARGE NOW", bookings_approve_path(plug) %></button>
 </div>
