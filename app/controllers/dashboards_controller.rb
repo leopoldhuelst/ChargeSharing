@@ -5,6 +5,6 @@ class DashboardsController < ApplicationController
   def show
     @user = current_user
     @bookings = @user.bookings
-    @current = @user.bookings.last
+    @current = @bookings.last
   end
 end

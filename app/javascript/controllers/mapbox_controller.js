@@ -43,14 +43,36 @@ export default class extends Controller {
 
   }
   _addMarkersToMap() {
+    if (this.markersValue.length === 1) {
+      this.markersValue.forEach((marker) => {
+        const customMarker = document.createElement('div');
+        customMarker.className = 'active_marker';
+        customMarker.style.backgroundImage = `url('${marker.active_image_url}')`;
+        customMarker.style.backgroundSize = 'cover';
+        customMarker.style.width = '27px';
+        customMarker.style.height = '35px';
+          new mapboxgl.Marker(customMarker)
+            .setLngLat([marker.lng, marker.lat])
+            .addTo(this.map)
+      })
+    } else {
     this.markersValue.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.info_window);
       const customMarker = document.createElement('div');
-      customMarker.className = 'marker';
-      customMarker.style.backgroundImage = `url('${marker.image_url}')`;
-      customMarker.style.backgroundSize = 'cover';
-      customMarker.style.width = '27px';
-      customMarker.style.height = '35px';
+      if (marker.availability === 0) {
+        customMarker.className = 'active_marker';
+        customMarker.style.backgroundImage = `url('${marker.active_image_url}')`;
+        customMarker.style.backgroundSize = 'cover';
+        customMarker.style.width = '27px';
+        customMarker.style.height = '35px';
+      } else {
+        customMarker.className = 'inactive_marker';
+        customMarker.style.backgroundImage = `url('${marker.inactive_image_url}')`;
+        customMarker.style.backgroundSize = 'cover';
+        customMarker.style.width = '27px';
+        customMarker.style.height = '35px';
+      }
+
 
       new mapboxgl.Marker(customMarker)
         .setLngLat([marker.lng, marker.lat])
@@ -59,7 +81,7 @@ export default class extends Controller {
         // .addEventListener("click", (event) => {
         //   console.log("hello")
         // });
-    });
+    })};
   }
   _fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds();
