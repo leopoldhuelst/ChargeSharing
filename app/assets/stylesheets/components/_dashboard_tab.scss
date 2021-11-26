@@ -73,6 +73,13 @@
   }
 }
 
+// tab-pages display animation
+#tab-1-content.select, #tab-2-content.select, #tab-3-content.select {
+  // display: block;
+  opacity: 1;
+  transition: 0.3;
+}
+
 @media (min-width: 1000px) {
   #tab-1-content, #tab-2-content, #tab-3-content {
     display: flex;
@@ -124,11 +131,4 @@
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-}
-
-// tab-pages display animation
-#tab-1-content.select, #tab-2-content.select, #tab-3-content.select {
-  // display: block;
-  opacity: 1;
-  transition: 0.3;
 }

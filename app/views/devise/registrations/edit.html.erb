@@ -27,21 +27,26 @@
 
 
 <div id="edit-profile-field" class="d-none">
-  <h2>Edit Profile</h2>
+  <%# <h2>Edit Profile</h2> %>
+  <%# <p>NOTE: EVERY CHANGE REQUIRES CURRENT PASSWORD</p> %>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= f.error_notification %>
 
     <div class="form-inputs">
-      <%= f.input :first_name %>
-      <%= f.input :last_name %>
 
-      <%= f.input :email, required: true, autofocus: true %>
+      <%# <%= f.input :email, required: true, autofocus: true %>
 
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
       <% end %>
 
+      <%= f.input :first_name,
+                  required: false,
+                  input_html: { autocomplete: "first_name" } %>
+      <%= f.input :last_name,
+                  required: false,
+                  input_html: { autocomplete: "last_name" } %>
       <%= f.input :password,
                   hint: "leave it blank if you don't want to change it",
                   required: false,
@@ -54,8 +59,8 @@
                   required: true,
                   input_html: { autocomplete: "current-password" } %>
     </div>
-
-    <div class="form-actions">
+    <div class="tab-content-separator"></div>
+    <div class="submit-buttons">
       <%= f.button :submit, "Update" %>
     </div>
   <% end %>
@@ -91,21 +96,51 @@
 <div id="tab-1-content" class="select">
   <div class="tab-card">
     <h2>Latest booking</h2>
-      <div class="tab-content-separator"></div>
-      <p><%= @user.bookings.last.date_time.strftime('%A, %d %b') %></p>
-      <p><%= @user.bookings.last.date_time.strftime('%l:%M %p') %> - <%=  (@user.bookings.last.date_time + @user.bookings.last.duration.minutes).strftime('%l:%M %p') %></p>
-      <p><%= @user.bookings.last.plug.location%></p>
+      <% if @user.bookings.last %>
+        <div class="tab-content-separator"></div>
+        <p><%= @user.bookings.last.date_time.strftime('%A, %d %b') %></p>
+        <p><%= @user.bookings.last.date_time.strftime('%l:%M %p') %> - <%=  (@user.bookings.last.date_time + @user.bookings.last.duration.minutes).strftime('%l:%M %p') %></p>
+        <p><%= @user.bookings.last.plug.location%></p>
       <p>Write Review + <i class="far fa-keyboard"></i></p>
+      <% else %>
+        <div class="tab-content-separator"></div>
+        <p>No bookings yet</p>
+        <p><%= link_to 'Go to map', root_path, style: "z-index:99999" %></p>
+      <% end %>
   </div>
 </div>
-
 
 <%# Reviewstab HTML %>
 
 <div id="tab-2-content">
   <div class="tab-card">
     <h3>Written Reviews <i class="fas fa-paper-plane"></i></h3>
-      <% @user.reviews.each do |review| %>
+      <% if @user.reviews.last %>
+        <% @user.reviews.each do |review| %>
+          <div class="tab-content-separator"></div>
+          <% num = review.rating.to_i %>
+          <p>
+            <% num.times do %>
+              <i class="fas fa-star small "></i>
+            <% end %>
+            <% (5-num).times do %>
+              <i class="far fa-star small "></i>
+            <% end %>
+          </p>
+          <p>"<%= review.contents %>"</p>
+          <%# <p>by <%= review.booking.plug.user.first_name %> <%#= review.booking.plug.user.last_name %></p>
+          <p><%= review.booking.date_time.strftime('%A, %d %b') %></p>
+        <% end %>
+      <% else %>
+        <div class="tab-content-separator"></div>
+        <p>No reviews yet</p>
+        <p><%= link_to 'Go to map', root_path, style: "z-index:99999" %></p>
+      <% end %>
+  </div>
+  <div class="tab-card">
+    <h3>Received Reviews <i class="fas fa-mail-bulk"></i></h3>
+    <% if @user.reviews_as_owner.last %>
+      <% @user.reviews_as_owner.each do |review| %>
         <div class="tab-content-separator"></div>
         <% num = review.rating.to_i %>
         <p>
@@ -116,25 +151,14 @@
             <i class="far fa-star small "></i>
           <% end %>
         </p>
-        <p><%= review.contents %></p>
+        <p>"<%= review.contents %>"</p>
+        <%# <p>by <%= review.booking.user.first_name %> <%#= review.booking.user.last_name %></p>
         <p><%= review.booking.date_time.strftime('%A, %d %b') %></p>
       <% end %>
-  </div>
-  <div class="tab-card">
-    <h3>Received Reviews <i class="fas fa-mail-bulk"></i></h3>
-    <% @user.reviews_as_owner.each do |review| %>
+    <% else %>
       <div class="tab-content-separator"></div>
-      <% num = review.rating.to_i %>
-      <p>
-        <% num.times do %>
-          <i class="fas fa-star small "></i>
-        <% end %>
-        <% (5-num).times do %>
-          <i class="far fa-star small "></i>
-        <% end %>
-      </p>
-      <p><%= review.contents %></p>
-      <p><%= review.booking.date_time.strftime('%A, %d %b') %></p>
+      <p>No received reviews yet</p>
+      <p><%= link_to 'Go to map', root_path, style: "z-index:99999" %></p>
     <% end %>
   </div>
 </div>
@@ -146,22 +170,40 @@
 <div id="tab-3-content">
   <div class="tab-card">
     <h3>Booking History <i class="fas fa-book"></i></h3>
-    <% @user.bookings.each do |booking| %>
+    <% if @user.bookings.last %>
+      <% @user.bookings.each do |booking| %>
+        <div class="tab-content-separator"></div>
+        <p><%= booking.date_time.strftime('%A, %d %b') %></p>
+        <p><%= booking.date_time.strftime('%l:%M %p') %> - <%=  (booking.date_time + booking.duration.minutes).strftime('%l:%M %p') %></p>
+        <p><%= booking.plug.location%></p>
+      <% end %>
+    <% else %>
       <div class="tab-content-separator"></div>
-      <p><%= booking.date_time.strftime('%A, %d %b') %></p>
-      <p><%= booking.date_time.strftime('%l:%M %p') %> - <%=  (booking.date_time + booking.duration.minutes).strftime('%l:%M %p') %></p>
-      <p><%= booking.plug.location%></p>
+      <p>No booking history yet</p>
+      <p><%= link_to 'Go to map', root_path, style: "z-index:99999" %></p>
     <% end %>
   </div>
   <div class="tab-card">
-    <h3>Plug Booking History <i class="fas fa-charging-station"></i></h3>
-    <% @user.plugs.each do |plug| %>
-      <% plug.bookings.each do |booking| %>
-        <div class="tab-content-separator"></div>
-        <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>
-        <p><%= booking.date_time.strftime('%A, %d %b') %></p>
-        <p><%= booking.date_time.strftime('%l:%M %p') %> - <%=  (booking.date_time + booking.duration.minutes).strftime('%l:%M %p') %></p>
+    <h3 class="mb-4">Plug Booking History <i class="fas fa-charging-station"></i></h3>
+    <% if @user.plugs.last %>
+      <% @user.plugs.each do |plug| %>
+        <p>Your plug at <%= plug.location %></p>
+        <% if plug.bookings.last %>
+          <% plug.bookings.each do |booking| %>
+            <div class="tab-content-separator"></div>
+            <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>
+            <p><%= booking.date_time.strftime('%A, %d %b') %></p>
+            <p><%= booking.date_time.strftime('%l:%M %p') %> - <%=  (booking.date_time + booking.duration.minutes).strftime('%l:%M %p') %></p>
+          <% end %>
+        <% else %>
+          <div class="tab-content-separator"></div>
+          <p>Sorry, your plug wasn't booked yet...</p>
+        <% end %>
       <% end %>
+    <% else %>
+      <div class="tab-content-separator"></div>
+      <p>You haven't added a plug yet</p>
+      <p><%= link_to 'Add plug', root_path, style: "z-index:99999" %></p>
     <% end %>
   </div>
 </div>

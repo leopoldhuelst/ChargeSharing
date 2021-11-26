@@ -7,8 +7,39 @@
   margin-bottom: 30px;
   background-color: white;
   color: rgb(114, 114, 114);
+  h2 {
+    font-size: 18px;
+    text-align: center;
+  }
+  h3 {
+    font-size: 18px;
+    text-align: center;
+  }
+  p {
+    font-size: 12px;
+    line-height: 13px;
+    margin: 8px 0;
+    text-align: center;
+  }
   // border: 2px solid red;
 }
+
+// .form-text {
+//   text-align: center;
+// }
+
+.submit-buttons {
+  text-align: center;
+  color: rgb(96, 96, 224);
+}
+
+// .form-button {
+//   border-radius: 10px;
+//   background-color: $default-red;
+//   input {
+//     color: white;
+//   }
+// }
 
 // .input-field {
 //   padding: 3px;
