@@ -1,0 +1,57 @@
+.payment-page {
+  background-color: rgb(228, 228, 228);
+  height: 100vh;
+}
+
+#placer-div {
+  height: 50px;
+}
+
+.payment-page-form {
+  border-radius: 10px;
+  margin-left: 50px;
+  margin-right: 50px;
+  background-color: rgb(201, 201, 201);
+  padding: 15px;
+  h2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+  }
+  p {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 19px;
+    font-weight: 400;
+    margin-top: 10px;
+    margin-bottom: 0px;
+  }
+}
+
+.payment-page-button {
+  display: flex;
+  margin-top: 15px;
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  justify-content: space-between;
+}
+
+.cancel-button {
+  color: gb(114, 114, 114);
+  text-decoration: none;
+  padding: 4px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 19px;
+  font-weight: 400;
+}
+
+.book-now-button {
+  padding: 4px;
+  color: white;
+  background-color: $default-red;
+  border-radius: 10px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 19px;
+  font-weight: 400;
+}
