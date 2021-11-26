@@ -5,7 +5,12 @@
         data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
   <div class="booking-info" style="height: 30vh">
-    <div class="stop-button btn btn-danger">
+    <div class="booking-info-text">
+     <p><%= @plug.location %></p>
+     <p>Start-time: <%= @booking.created_at.strftime('%l:%M %p') %></p>
+     <p>Cost: <%= @plug.fixed_cost_per_15_min %> per 15 minutes</p>
+    </div>
+    <div class="stop-button">
       <%= link_to "Stop Booking", bookings_stop_path(@plug, @booking), class:"stop-button-press" %>
     </div>
   </div>
