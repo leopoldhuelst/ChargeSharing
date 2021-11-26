@@ -12,6 +12,7 @@
   margin-top: 5rem !important;
   transform: none !important;
   border-radius: 25px !important;
+  flex: none !important;
 }
 
 .mapboxgl-popup-tip {
@@ -41,7 +42,7 @@
 
 .mapboxgl-ctrl.mapboxgl-ctrl-group {
   border-radius: 25px;
-  background-color: #6EDE5C;
+  background-color: #f33a3a;
 }
 
 .mapboxgl-canvas-container.mapboxgl-interactive.mapboxgl-touch-drag-pan.mapboxgl-touch-zoom-rotate {
@@ -53,16 +54,16 @@
     position: absolute;
 }
 
-.mapboxgl-popup-anchor-top .mapboxgl-popup-tip,
-.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip,
-.mapboxgl-popup-anchor-center .mapboxgl-popup-tip,
-.mapboxgl-popup-anchor-left .mapboxgl-popup-tip,
-.mapboxgl-popup-anchor-right .mapboxgl-popup-tip,
-.mapboxgl-popup-anchor-bottom-right .mapboxgl-popup-tip,
-.mapboxgl-popup-anchor-bottom-left .mapboxgl-popup-tip,
-.mapboxgl-popup-anchor-top-right .mapboxgl-popup-tip,
-.mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip{
-    display:none !important;
+.mapboxgl-popup-anchor-top,
+.mapboxgl-popup-anchor-bottom,
+.mapboxgl-popup-anchor-center,
+.mapboxgl-popup-anchor-left,
+.mapboxgl-popup-anchor-right,
+.mapboxgl-popup-anchor-bottom-right,
+.mapboxgl-popup-anchor-bottom-left,
+.mapboxgl-popup-anchor-top-right,
+.mapboxgl-popup-anchor-top-left{
+    //display:none !important;
     transform:none !important;
 }
 
@@ -73,4 +74,20 @@
 
 .mapboxgl-popup.mapboxgl-popup-anchor-bottom {
   transform:none !important;
+  //transform:translate(none) !important;
+}
+
+.info-window p{
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  padding: .6rem;
+  margin: .4rem
+  ;
+
+}
+
+.info-window {
+  background-color: rgb(250, 166, 166);
+  border-radius: 25px;
 }
