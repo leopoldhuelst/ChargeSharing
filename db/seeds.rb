@@ -88,13 +88,8 @@ user2 = User.create!(
 plug = Plug.create!(
   plug_type: rand(1..2),
   location: "Bayerstraße 12, München",
-<<<<<<< HEAD
   availability: [0, 1].sample,
   description: Faker::Lorem.paragraph,
-=======
-  availability: @dates.sample,
-  description: @description.sample,
->>>>>>> master
   fixed_cost_per_15_min: rand(1..6),
   user: user2
 )
