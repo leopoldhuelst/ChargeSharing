@@ -8,5 +8,7 @@ export default class extends Controller {
     this.buttonTarget.classList.toggle("change-bars")
     // this.menuTextTarget.classList.toggle("d-none")
     // this.menuContentTarget.classList.toggle("move")
+    var notMenu = document.querySelector('#notmenu')
+    notMenu.classList.toggle("hide")
   }
 }

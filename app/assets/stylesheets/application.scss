@@ -13,3 +13,19 @@
 @import "pages/index";
 @import 'mapbox-gl/dist/mapbox-gl';
 @import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder';
+
+
+#notmenu {
+  transition: 0.4s;
+  filter: none;
+}
+
+#notmenu.hide {
+  // filter: brightness(50%);
+  transition: 0.4s;
+  filter: blur(2px);
+}
+
+body {
+  background-color: rgb(228, 228, 228);
+}
