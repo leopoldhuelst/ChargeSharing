@@ -48,7 +48,7 @@ User.create!(
 
   booking = Booking.create!(
     user: user,
-    status: [0, 1].sample,
+    status: 1,
     duration: rand(1..10),
     plug: plug
   )
@@ -95,7 +95,7 @@ plug = Plug.create!(
 )
 booking = Booking.create!(
   user: user1,
-  status: [0, 1].sample,
+  status: 1,
   duration: rand(15..180),
   plug: plug
 )
@@ -119,7 +119,7 @@ plug = Plug.create!(
 
 booking = Booking.create!(
   user: user2,
-  status: [0, 1].sample,
+  status: 1,
   duration: rand(15..180),
   plug: plug
 )
