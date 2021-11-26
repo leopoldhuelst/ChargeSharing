@@ -74,10 +74,11 @@
 <%# THE CURRENT BOOKING (IF USER HAS ONE IN THAT MOMENT) %>
 <% @user.bookings.each do |booking| %>
   <% if booking.status == 0 %>
-    <div class="current-booking tab-card">
+    <div class="current-booking">
+      <h2>CURRENT BOOKING</h2>
       <div class="tab-content-separator"></div>
-      <p><%= @user.bookings.last.date_time.strftime('%A, %d %b') %></p>
-      <p><%= @user.bookings.last.date_time.strftime('%l:%M %p') %> - <%=  (@user.bookings.last.date_time + @user.bookings.last.duration.minutes).strftime('%l:%M %p') %></p>
+      <p><%= @user.bookings.last.created_at.strftime('%A, %d %b') %></p>
+      <p><%= @user.bookings.last.created_at.strftime('%l:%M %p') %> - <%=  (@user.bookings.last.created_at + @user.bookings.last.duration.minutes).strftime('%l:%M %p') %></p>
       <p><%= @user.bookings.last.plug.location%></p>
     </div>
   <% end %>
@@ -111,8 +112,8 @@
     <h2>Latest booking</h2>
       <% if @user.bookings.last %>
         <div class="tab-content-separator"></div>
-        <p><%= @user.bookings.last.date_time.strftime('%A, %d %b') %></p>
-        <p><%= @user.bookings.last.date_time.strftime('%l:%M %p') %> - <%=  (@user.bookings.last.date_time + @user.bookings.last.duration.minutes).strftime('%l:%M %p') %></p>
+        <p><%= @user.bookings.last.created_at.strftime('%A, %d %b') %></p>
+        <p><%= @user.bookings.last.created_at.strftime('%l:%M %p') %> - <%=  (@user.bookings.last.created_at + @user.bookings.last.duration.minutes).strftime('%l:%M %p') %></p>
         <p><%= @user.bookings.last.plug.location%></p>
       <p>Write Review + <i class="far fa-keyboard"></i></p>
       <% else %>
@@ -142,7 +143,7 @@
           </p>
           <p>"<%= review.contents %>"</p>
           <%# <p>by <%= review.booking.plug.user.first_name %> <%#= review.booking.plug.user.last_name %></p>
-          <p><%= review.booking.date_time.strftime('%A, %d %b') %></p>
+          <p><%= review.booking.created_at.strftime('%A, %d %b') %></p>
         <% end %>
       <% else %>
         <div class="tab-content-separator"></div>
@@ -166,7 +167,7 @@
         </p>
         <p>"<%= review.contents %>"</p>
         <%# <p>by <%= review.booking.user.first_name %> <%#= review.booking.user.last_name %></p>
-        <p><%= review.booking.date_time.strftime('%A, %d %b') %></p>
+        <p><%= review.booking.created_at.strftime('%A, %d %b') %></p>
       <% end %>
     <% else %>
       <div class="tab-content-separator"></div>
@@ -186,8 +187,8 @@
     <% if @user.bookings.last %>
       <% @user.bookings.each do |booking| %>
         <div class="tab-content-separator"></div>
-        <p><%= booking.date_time.strftime('%A, %d %b') %></p>
-        <p><%= booking.date_time.strftime('%l:%M %p') %> - <%=  (booking.date_time + booking.duration.minutes).strftime('%l:%M %p') %></p>
+        <p><%= booking.created_at.strftime('%A, %d %b') %></p>
+        <p><%= booking.created_at.strftime('%l:%M %p') %> - <%=  (booking.created_at + booking.duration.minutes).strftime('%l:%M %p') %></p>
         <p><%= booking.plug.location%></p>
       <% end %>
     <% else %>
@@ -205,8 +206,8 @@
           <% plug.bookings.each do |booking| %>
             <div class="tab-content-separator"></div>
             <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>
-            <p><%= booking.date_time.strftime('%A, %d %b') %></p>
-            <p><%= booking.date_time.strftime('%l:%M %p') %> - <%=  (booking.date_time + booking.duration.minutes).strftime('%l:%M %p') %></p>
+            <p><%= booking.created_at.strftime('%A, %d %b') %></p>
+            <p><%= booking.created_at.strftime('%l:%M %p') %> - <%=  (booking.created_at + booking.duration.minutes).strftime('%l:%M %p') %></p>
           <% end %>
         <% else %>
           <div class="tab-content-separator"></div>
