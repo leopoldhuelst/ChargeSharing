@@ -1,28 +1,37 @@
-<div class="payment-page">
-  <div id="placer-div">
+<div class="logo">
+  <h2>Payment</h2>
+</div>
+
+<div class="input-field">
+  <form action="#">
+  <label for="card-owner">Card owner</label>
+  <%# <input type="card-owner" placeholder="Angelo Merte"> %>
+  <input class="form-control" autofocus="autofocus" value="">
+  <br>
+  <label for="">Card number</label>
+  <input class="form-control" autofocus="autofocus" value="">
+  <br>
+  <div class="mb-5" style="display: flex">
+    <div style="margin-right: 5px">
+      <label for="">Exp. date</label>
+      <input class="form-control" autofocus="autofocus" value="">
+    </div>
+    <br>
+    <div style="margin-left: 5px">
+      <label for="">Security code</label>
+      <input class="form-control" autofocus="autofocus" value="">
+    </div>
   </div>
-  <div class="payment-page-form">
-    <h2>Payment</h2>
-    <form action="#">
-      <p>Card owner</p>
-      <input type="card-owner" placeholder="Angelo Merte">
-      <br>
-      <p>Card number</p>
-      <input type="card-number" placeholder="your IBAN">
-      <br>
-      <p>Expiration date</p>
-      <input type="expiration-date" placeholder="12/22">
-      <br>
-      <p>Security code</p>
-      <input type="security-code" placeholder="your Code">
-      </form>
-      <div class="payment-page-button">
-        <div class="cancel-button">
-          <%= link_to "Cancel", plugs_path %>
-        </div>
-        <div class="book-now-button">
-          <%= link_to "Book Now", plug_bookings_path(@plug), method: :post %>
-        </div>
-      </div>
+  </form>
+    <div class="tab-content-separator"></div>
+    <div class="submit-buttons">
+      <%= link_to "Book Now", plug_bookings_path(@plug), method: :post, style: 'color: black' %>
+    </div>
+    <div class="tab-content-separator"> </div>
+    <div class="submit-buttons">
+      <%= link_to "Cancel", plugs_path %>
+    </div>
+
+
   </div>
 </div>
