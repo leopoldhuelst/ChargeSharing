@@ -91,11 +91,11 @@
   <%# <div id="tab-1" onclick="tabOne()">
     <h4>HOME</h4>
   </div> %>
-  <div id="tab-2" onclick="tabTwo()" class="select">
-    <h4>REVIEWS</h4>
-  </div>
-  <div id="tab-3" onclick="tabThree()">
+  <div id="tab-3" onclick="tabThree()" class="select">
     <h4>BOOKINGS</h4>
+  </div>
+  <div id="tab-2" onclick="tabTwo()">
+    <h4>REVIEWS</h4>
   </div>
 </div>
 
@@ -106,7 +106,7 @@
 
 
 
-<div id="tab-1-content" class="select">
+<div id="tab-1-content">
   <div class="tab-card">
     <h2>Latest booking</h2>
       <% if @user.bookings.last %>
@@ -125,7 +125,7 @@
 
 <%# Reviewstab HTML %>
 
-<div id="tab-2-content" class="select">
+<div id="tab-2-content">
   <div class="tab-card">
     <h3>Written Reviews <i class="fas fa-paper-plane"></i></h3>
       <% if @user.reviews.last %>
@@ -180,7 +180,7 @@
 <%# Bookings-tab HTML %>
 
 
-<div id="tab-3-content">
+<div id="tab-3-content"  class="select">
   <div class="tab-card">
     <h3>Booking History <i class="fas fa-book"></i></h3>
     <% if @user.bookings.last %>
