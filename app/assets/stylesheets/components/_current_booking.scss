@@ -1,11 +1,19 @@
 .current-booking {
   border-radius: 8px;
   padding:  25px 50px;
+  padding-bottom: 20px;
   margin-bottom: 30px;
   background-color: #DEA904;
   color: white;
-  margin: 0 30px;
+  margin: 0px 30px;
+  margin-top: 40px;
   border: 2px solid rgb(114, 114, 114);
+  a {
+    text-decoration: none;
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+  }
   h2 {
     font-size: 18px;
     text-align: center;

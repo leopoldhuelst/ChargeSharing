@@ -77,9 +77,11 @@
     <div class="current-booking">
       <h2>CURRENT BOOKING</h2>
       <div class="tab-content-separator"></div>
-      <p><%= @user.bookings.last.created_at.strftime('%A, %d %b') %></p>
-      <p><%= @user.bookings.last.created_at.strftime('%l:%M %p') %> - <%=  (@user.bookings.last.created_at + @user.bookings.last.duration.minutes).strftime('%l:%M %p') %></p>
-      <p><%= @user.bookings.last.plug.location%></p>
+      <p><%= booking.created_at.strftime('%A, %d %b') %></p>
+      <p>Started at <%= booking.created_at.strftime('%l:%M %p') %></p>
+      <p><%= booking.plug.location%></p>
+      <div class="tab-content-separator"></div>
+      <p><%= link_to 'DETAILS', plug_booking_path(booking.plug, booking), style: "z-index:99999" %></p>
     </div>
   <% end %>
 <% end %>
