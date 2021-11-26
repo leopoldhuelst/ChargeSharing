@@ -1,8 +1,11 @@
+require 'date'
+
 class BookingsController < ApplicationController
   def show
     @booking = Booking.find(params[:id])
     authorize @booking
     @plug = @booking.plug
+    @start_time = @booking.created_at
     @marker = [{
       lat: @plug.latitude,
       lng: @plug.longitude,
@@ -41,6 +44,9 @@ class BookingsController < ApplicationController
     authorize @booking
     @plug = Plug.find(params[:plug_id])
     @booking.status = 1
+    created = @booking.created_at
+    updated = @booking.updated_at
+    @booking.duration = updated - created
     @booking.save
     @plug.availability = 0
     @plug.save
