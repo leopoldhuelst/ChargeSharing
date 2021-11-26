@@ -1,0 +1,23 @@
+.stop-button {
+  z-index: 2;
+  position: fixed;
+  bottom: 0px;
+  background-color: $default-red;
+  width: 100vw;
+  height: 50px;
+  text-align: center;
+  align-items: center;
+  color: white;
+  padding-top: 3px;
+  // border-radius: 10px;
+  // margin-bottom: 5px;
+}
+
+.stop-button-press {
+  color: white;
+  text-decoration: none;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 30px;
+  font-weight: 600;
+
+}
