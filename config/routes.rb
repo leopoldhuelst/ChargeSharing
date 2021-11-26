@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get '/dashboard', to: 'dashboards#show', as: 'dashboard'
   get 'plugs/:id/bookings/approve', to: 'bookings#approve', as: 'bookings_approve'
+  get 'plugs/:plug_id/bookings/:id/stop', to: 'bookings#stop_booking', as: 'bookings_stop'
   resources :plugs, only: [:index] do
     resources :bookings, only: [:create, :show]
   end

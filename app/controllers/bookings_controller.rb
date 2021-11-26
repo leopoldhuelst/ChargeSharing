@@ -35,4 +35,16 @@ class BookingsController < ApplicationController
     @plug = Plug.find(params[:id])
     authorize @plug
   end
+
+  def stop_booking
+    @booking = Booking.find(params[:id])
+    authorize @booking
+    @plug = Plug.find(params[:plug_id])
+    @booking.status = 1
+    @booking.save
+    @plug.availability = 0
+    @plug.save
+
+    redirect_to root_path
+  end
 end
