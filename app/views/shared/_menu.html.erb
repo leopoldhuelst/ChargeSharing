@@ -6,9 +6,11 @@
         <div class="content-separator"></div>
         <%= link_to 'FIND CHARGER', root_path %>
         <br>
-        <%= link_to 'MY PROFILE', dashboard_path %>
+        <%= link_to 'MY PROFILE', edit_user_registration_path %>
         <br>
         <%= link_to 'MY CHARGER', dashboard_path %>
+        <br>
+        <%= link_to 'SIGN OUT', destroy_user_session_path, method: :delete, data: { confirm: "Are you sure?" }, class: "submit-button" %>
       </div>
       <div class="content-separator"></div>
       <div class="footer-links">

@@ -18,7 +18,7 @@
   margin: 0 2px;
   background-color: white;
   color: rgb(255, 254, 254);
-  width: 33.333%;
+  width: 50%;
   transition: 0.3s;
   // box-shadow: 2px 2px 0px rgb(172, 172, 172);
 
@@ -42,6 +42,7 @@
 
 
 // THE TAB PAGES
+
 #tab-1-content, #tab-2-content, #tab-3-content {
   // display: none;
   opacity: 0;
@@ -54,18 +55,34 @@
   transition: 0.3s;
   margin: 30px;
   h2 {
-    font-size: 21px;
+    font-size: 18px;
+    text-align: center;
   }
   h3 {
-    font-size: 15px;
+    font-size: 18px;
+    text-align: center;
   }
   p {
     font-size: 12px;
-    margin-top: 6px;
-    margin-bottom: 0px;
+    line-height: 13px;
+    margin: 8px 0;
+    text-align: center;
   }
   button {
     text-decoration: none;
+  }
+}
+
+// tab-pages display animation
+#tab-1-content.select, #tab-2-content.select, #tab-3-content.select {
+  // display: block;
+  opacity: 1;
+  transition: 0.3;
+}
+
+@media (min-width: 1000px) {
+  #tab-1-content, #tab-2-content, #tab-3-content {
+    display: flex;
   }
 }
 
@@ -81,7 +98,7 @@
 // for the card design
 .tab-card {
   border-radius: 8px;
-  padding: 30px;
+  padding: 50px;
   margin-bottom: 30px;
   background-color: white;
   color: rgb(114, 114, 114);
@@ -101,16 +118,17 @@
   }
 }
 
+// the slim line between the booking/rating infos
+.tab-content-separator {
+  height: 1px;
+  width: 65%;
+  margin: 20px auto;
+  background-color: rgb(199, 199, 199);
+}
+
 // to have some elements next to each other
 .flexbox {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-}
-
-// tab-pages display animation
-#tab-1-content.select, #tab-2-content.select, #tab-3-content.select {
-  // display: block;
-  opacity: 1;
-  transition: 0.3;
 }
