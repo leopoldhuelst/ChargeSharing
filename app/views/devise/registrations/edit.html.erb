@@ -71,14 +71,27 @@
   <%# <%= link_to "Back", :back %>
 </div>
 
+<%# THE CURRENT BOOKING (IF USER HAS ONE IN THAT MOMENT) %>
+<% @user.bookings.each do |booking| %>
+  <% if booking.status == 0 %>
+    <div class="current-booking tab-card">
+      <div class="tab-content-separator"></div>
+      <p><%= @user.bookings.last.date_time.strftime('%A, %d %b') %></p>
+      <p><%= @user.bookings.last.date_time.strftime('%l:%M %p') %> - <%=  (@user.bookings.last.date_time + @user.bookings.last.duration.minutes).strftime('%l:%M %p') %></p>
+      <p><%= @user.bookings.last.plug.location%></p>
+    </div>
+  <% end %>
+<% end %>
+
+
 
 <%# THE TAB BUTTONS  %>
 
 <div id="tab-headers">
-  <div id="tab-1" onclick="tabOne()" class="select">
+  <%# <div id="tab-1" onclick="tabOne()">
     <h4>HOME</h4>
-  </div>
-  <div id="tab-2" onclick="tabTwo()">
+  </div> %>
+  <div id="tab-2" onclick="tabTwo()" class="select">
     <h4>REVIEWS</h4>
   </div>
   <div id="tab-3" onclick="tabThree()">
@@ -112,7 +125,7 @@
 
 <%# Reviewstab HTML %>
 
-<div id="tab-2-content">
+<div id="tab-2-content" class="select">
   <div class="tab-card">
     <h3>Written Reviews <i class="fas fa-paper-plane"></i></h3>
       <% if @user.reviews.last %>
