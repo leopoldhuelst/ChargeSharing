@@ -1,5 +1,28 @@
-<div>
-<h1>Are you sure?</h1>
-<%= link_to "Book Now", plug_bookings_path(@plug), method: :post %>
-<%= link_to "Cancel", plugs_path %>
+<div class="payment-page">
+  <div id="placer-div">
+  </div>
+  <div class="payment-page-form">
+    <h2>Payment</h2>
+    <form action="#">
+      <p>Card owner</p>
+      <input type="card-owner" placeholder="Angelo Merte">
+      <br>
+      <p>Card number</p>
+      <input type="card-number" placeholder="your IBAN">
+      <br>
+      <p>Expiration date</p>
+      <input type="expiration-date" placeholder="12/22">
+      <br>
+      <p>Security code</p>
+      <input type="security-code" placeholder="your Code">
+      </form>
+      <div class="payment-page-button">
+        <div class="cancel-button">
+          <%= link_to "Cancel", plugs_path %>
+        </div>
+        <div class="book-now-button">
+          <%= link_to "Book Now", plug_bookings_path(@plug), method: :post %>
+        </div>
+      </div>
+  </div>
 </div>
