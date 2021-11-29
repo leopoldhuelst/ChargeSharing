@@ -44,6 +44,7 @@ class BookingsController < ApplicationController
     authorize @booking
     @plug = Plug.find(params[:plug_id])
     @booking.status = 1
+    @booking.save
     created = @booking.created_at
     updated = @booking.updated_at
     @booking.duration = updated - created
