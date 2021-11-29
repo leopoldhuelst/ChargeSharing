@@ -1,10 +1,20 @@
 .booking-info-text {
   margin: 15px;
   border-radius: 10px;
-  background-color: rgb(201, 201, 201);
-  padding: 15px;
+  background-color: white;
+  padding: 25px;
   height: 163px;
   font-family: 'Rajdhani', sans-serif;
   font-size: 19px;
   font-weight: 400;
+}
+
+.booking-info-text-values-time {
+  display: flex;
+  justify-content: space-between;
+}
+
+.booking-info-text-values-cost {
+  display: flex;
+  justify-content: space-between;
 }
