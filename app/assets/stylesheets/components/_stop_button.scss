@@ -9,6 +9,10 @@
   align-items: center;
   color: white;
   padding-top: 3px;
+  a {
+    color: white;
+    text-decoration: none;
+  }
   // border-radius: 10px;
   // margin-bottom: 5px;
 }
@@ -19,8 +23,4 @@
   font-family: 'Rajdhani', sans-serif;
   font-size: 30px;
   font-weight: 600;
-  a {
-    color: white;
-    text-decoration: none;
-  }
 }
