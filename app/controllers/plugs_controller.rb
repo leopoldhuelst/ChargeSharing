@@ -19,20 +19,33 @@ class PlugsController < ApplicationController
   end
 
   def new
+    @plug = Plug.new
+    authorize @plug
   end
 
   def create
+    @plug = Plug.new(strong_params)
+    @plug.user = current_user
     authorize @plug
+    if @plug.save
+      redirect_to dashboard_path
+    else
+      render :new
+    end
   end
 
   def edit
     @user = current_user
-    authorize @plug = Plug.find(params[:id])
+    @plug = Plug.find(params[:id])
+    authorize @plug
+    render :edit
   end
 
   def update
+    @plug = Plug.find(params[:id])
+    authorize @plug
     if @plug.update(strong_params)
-      redirect_to plug_path(@plug.id)
+      redirect_to edit_plug_path(@plug)
     else
       render :edit
     end
@@ -44,6 +57,6 @@ class PlugsController < ApplicationController
   private
 
   def strong_params
-    params.require(:plug).permit(:location, :description, :fixed_cost_per_15_min, :plug_type)
+    params.require(:plug).permit(:location, :description, :fixed_cost_per_15_min, :plug_type, :availability)
   end
 end
