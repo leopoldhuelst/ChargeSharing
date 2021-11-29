@@ -1,6 +1,6 @@
 .mapboxgl-popup-content {
   border-radius: 25px !important;
-  background-color: #e4e4e4;
+  background-color: rgb(228, 228, 228) ;
   color: black;
   // background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1)) !important;
   box-shadow: 5px 5px 15px !important;
@@ -88,6 +88,11 @@
 }
 
 .info-window {
-  background-color: rgb(250, 166, 166);
-  border-radius: 25px;
+  // background-color: rgb(250, 166, 166);
+  // border-radius: 25px;
+  border-radius: 8 !important;
+  padding: 50 !important;
+  margin-bottom: 30 !important;
+  background-color: white;
+  color: #727272;
 }

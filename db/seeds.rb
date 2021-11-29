@@ -19,7 +19,6 @@ User.create!(
   first_name: "Joe",
   last_name: "Mama",
   birthdate: Faker::Date.birthday(min_age: 18, max_age: 80),
-  gender: ['male', 'female'].sample,
   plug_type: rand(1..2),
   email: Faker::Internet.email,
   password: "123456"
@@ -69,7 +68,6 @@ user1 = User.create!(
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
   birthdate: Faker::Date.birthday(min_age: 18, max_age: 80),
-  gender: ['male', 'female'].sample,
   plug_type: rand(1..2),
   email: "jesus@rippin.com",
   password: "123456"
@@ -79,7 +77,6 @@ user2 = User.create!(
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
   birthdate: Faker::Date.birthday(min_age: 18, max_age: 80),
-  gender: ['male', 'female'].sample,
   plug_type: rand(1..2),
   email: "jesus@drippin.com",
   password: "123456"
