@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'dashboards#show', as: 'dashboard'
   get 'plugs/:id/bookings/approve', to: 'bookings#approve', as: 'bookings_approve'
   get 'plugs/:plug_id/bookings/:id/stop', to: 'bookings#stop_booking', as: 'bookings_stop'
-  resources :plugs, only: [:index] do
+  resources :plugs, only: %i[index edit update destroy] do
     resources :bookings, only: %i[create show]
   end
   # get '/plugs', to: 'plugs#index'
