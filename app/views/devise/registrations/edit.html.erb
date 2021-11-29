@@ -95,6 +95,7 @@
   <div id="tab-2" onclick="tabTwo()">
     <h4>REVIEWS</h4>
   </div>
+
 </div>
 
 
@@ -107,17 +108,18 @@
 <div id="tab-1-content">
   <div class="tab-card">
     <h2>Latest booking</h2>
-      <% if @user.bookings.last %>
-        <div class="tab-content-separator"></div>
-        <p><%= @user.bookings.last.created_at.strftime('%A, %d %b') %></p>
-        <p><%= @user.bookings.last.created_at.strftime('%l:%M %p') %> - <%=  (@user.bookings.last.created_at + @user.bookings.last.duration.minutes).strftime('%l:%M %p') %></p>
-        <p><%= @user.bookings.last.plug.location%></p>
-      <p>Write Review + <i class="far fa-keyboard"></i></p>
-      <% else %>
-        <div class="tab-content-separator"></div>
-        <p>No bookings yet</p>
-        <p><%= link_to 'Go to map', root_path, style: "z-index:99999" %></p>
-      <% end %>
+    <% inactive_bookings = @user.bookings.where("status = 1") %>
+    <% unless inactive_bookings.empty? %>
+      <div class="tab-content-separator"></div>
+      <p><%= inactive_bookings[-1].created_at.strftime('%A, %d %b') %></p>
+      <p><%= inactive_bookings[-1].created_at.strftime('%l:%M %p') %> - <%=  (inactive_bookings[-1].created_at + (inactive_bookings[-1].duration / 60)).strftime('%l:%M %p') %></p>
+      <p><%= inactive_bookings[-1].plug.location%></p>
+    <p>Write Review + <i class="far fa-keyboard"></i></p>
+    <% else %>
+      <div class="tab-content-separator"></div>
+      <p>No bookings yet</p>
+      <p><%= link_to 'Go to map', root_path, style: "z-index:99999" %></p>
+    <% end %>
   </div>
 </div>
 
@@ -181,11 +183,11 @@
 <div id="tab-3-content"  class="select">
   <div class="tab-card">
     <h3>Booking History <i class="fas fa-book"></i></h3>
-    <% if @user.bookings.last %>
-      <% @user.bookings.each do |booking| %>
+    <% unless @user.bookings.empty? %>
+      <% inactive_bookings.each do |booking| %>
         <div class="tab-content-separator"></div>
         <p><%= booking.created_at.strftime('%A, %d %b') %></p>
-        <p><%= booking.created_at.strftime('%l:%M %p') %> - <%=  (booking.created_at + booking.duration.minutes).strftime('%l:%M %p') %></p>
+        <p><%= booking.created_at.strftime('%l:%M %p') %> - <%=  (booking.created_at + booking.duration.seconds).strftime('%l:%M %p') %></p>
         <p><%= booking.plug.location%></p>
       <% end %>
     <% else %>

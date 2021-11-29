@@ -48,6 +48,7 @@ class BookingsController < ApplicationController
     created = @booking.created_at
     updated = @booking.updated_at
     @booking.duration = updated - created
+    @booking.cost = @booking.duration * (@booking.plug.fixed_cost_per_15_min / 900)
     @booking.save
     @plug.availability = 0
     @plug.save
