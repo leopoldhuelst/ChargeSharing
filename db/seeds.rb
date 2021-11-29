@@ -48,7 +48,8 @@ User.create!(
     user: user,
     status: 1,
     duration: rand(1..10),
-    plug: plug
+    plug: plug,
+    cost: rand(2..25)
   )
   [0, 0, 1].each do |number|
     Review.create!(
@@ -93,7 +94,8 @@ booking = Booking.create!(
   user: user1,
   status: 1,
   duration: rand(15..180),
-  plug: plug
+  plug: plug,
+  cost: rand(2..25)
 )
 [0, 0, 1].each do |number|
   Review.create!(
@@ -117,7 +119,8 @@ booking = Booking.create!(
   user: user2,
   status: 1,
   duration: rand(15..180),
-  plug: plug
+  plug: plug,
+  cost: rand(2..25)
 )
 
 [0, 0, 1].each do |number|
