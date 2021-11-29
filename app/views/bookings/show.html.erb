@@ -1,50 +1,67 @@
-<div class="booking-container">
+<div class="booking-container" id="notpopup">
   <div style="height: 70vh; width:100vw;" id="map"
         data-controller="mapbox"
         data-mapbox-markers-value="<%= @marker.to_json %>"
         data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
-  <div class="booking-info" style="height: 30vh">
+  <div class="booking-info" style="height: 25vh" data-controller="booking-info"
+  data-booking-info-cost-per-second-value="<%= @plug.fixed_cost_per_15_min %>"
+  data-booking-info-seconds-value="<%= @start_time.to_i %>">
     <div class="booking-info-text">
       <p><%= @plug.location %></p>
       <div class="booking-info-text-values">
         <div class="booking-info-text-values-time">
           <p>Start-time: <%= @booking.created_at.strftime('%l:%M %p') %></p>
-          <p id="time">00:00:00</p>
+          <p data-booking-info-target="time" id="time">00:00:00</p>
         </div>
         <div class="booking-info-text-values-cost">
           <p>Cost: $<%= @plug.fixed_cost_per_15_min %> per 15min</p>
-          <p id="cost">$0.00</p>
+          <p data-booking-info-target="cost" id="cost">$0.00</p>
         </div>
       </div>
-    </div>
-    <div class="stop-button">
       <%= link_to "Stop Booking", bookings_stop_path(@plug, @booking), class:"stop-button-press" %>
     </div>
   </div>
 </div>
 
+
 <script>
-  const timer = document.querySelector('#time');
-  const cost_calculation = document.querySelector('#cost')
-  const cost_per_15_min = <%= @plug.fixed_cost_per_15_min %>
-  const cost_per_second = cost_per_15_min / 900
-  let cost = 0
-  let seconds = 0;
+  // if (!!timer) {
+  //   let timer = document.querySelector('#time');
+  //   let cost_calculation = document.querySelector('#cost');
+  //   let cost_per_15_min = <%= @plug.fixed_cost_per_15_min %>
+  //   let cost_per_second = cost_per_15_min / 900
+  //   let cost = 0
+  //   let seconds = <%= @start_time.to_i %>;
+  // }
+  // setInterval(function () {
+  //   seconds += 1;
+  //   cost = seconds * cost_per_second
+  //   console.log(cost)
+  //   console.log(seconds)
+  //   timer.innerText = formatTime(seconds);
+  //   cost_calculation.innerText = `$${String(cost.toFixed(2))}`
+  // }, 1000);
 
-  setInterval(function () {
-    seconds += 1;
-    cost += cost_per_second
-    timer.innerText = formatTime(seconds);
-    cost_calculation.innerText = `$${String(cost.toFixed(2))}`
-  }, 1000);
+  // function formatTime(seconds) {
+  //   const hours = Math.floor(seconds / 3600)
+  //   const minutes = Math.floor((seconds % 3600) / 60);
+  //   seconds = seconds % 60;
+  //   return (
+  //     String(hours).padStart(2, '0') + ':' + String(minutes).padStart(2, '0') + ':' + String(seconds).padStart(2, '0')
+  //   );
+  // }
 
-  function formatTime(seconds) {
-    const hours = Math.floor(seconds / 3600)
-    const minutes = Math.floor((seconds % 3600) / 60);
-    seconds = seconds % 60;
-    return (
-      String(hours).padStart(2, '0') + ':' + String(minutes).padStart(2, '0') + ':' + String(seconds).padStart(2, '0')
-    );
-  }
+  // location.reload();
+
+  // function myFunction() {
+  //   const popup = document.getElementById("popup");
+  //   const notPopup = document.querySelector('#notpopup')
+  //   notPopup.classList.toggle("hide")
+  //   popup.classList.toggle("show");
+  //   popup.innerText = `
+  //     Duration: ${formatTime(seconds)}
+  //     Cost: $${cost.toFixed(2)}
+  //   `
+  // }
 </script>
