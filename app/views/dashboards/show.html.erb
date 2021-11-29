@@ -4,19 +4,22 @@
 
 <% if @user.plugs.last %>
   <% @user.plugs.each do |plug| %>
-    <div class="charger-card">
-      <%= link_to edit_plug_path(plug) do %>
+    <%= link_to edit_plug_path(plug), style: "text-decoration:none" do %>
+      <div class="charger-card">
         <h3><%= plug.location %></h3>
         <% if plug.availability == 1 %>
           <div class="tab-content-separator"></div>
           <p>Currently Booked</p>
         <% end %>
-        <p><%=  %></p>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   <% end %>
 <% else %>
   <h2>No plugs yet</h2>
+<% end %>
+
+<%= link_to plugs_new_path do %>
+  <div class="back-button">+</div>
 <% end %>
 
 
