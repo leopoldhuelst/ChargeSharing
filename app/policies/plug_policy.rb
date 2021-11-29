@@ -5,7 +5,15 @@ class PlugPolicy < ApplicationPolicy
     end
   end
 
+  def edit?
+    record.user == user
+  end
+
   def approve?
+    true
+  end
+
+  def show?
     true
   end
 end

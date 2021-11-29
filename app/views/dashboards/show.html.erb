@@ -1,3 +1,24 @@
-<div class="delete-this-after-demo">
-  <h2>Our Team is working on that Feature :)</h2>
+<div class="logo charger">
+  <h2>MY CHARGERS</h2>
 </div>
+
+<% if @user.plugs.last %>
+  <% @user.plugs.each do |plug| %>
+    <div class="charger-card">
+      <%= link_to edit_plug_path(plug) do %>
+        <h3><%= plug.location %></h3>
+        <% if plug.availability == 1 %>
+          <div class="tab-content-separator"></div>
+          <p>Currently Booked</p>
+        <% end %>
+        <p><%=  %></p>
+      <% end %>
+    </div>
+  <% end %>
+<% else %>
+  <h2>No plugs yet</h2>
+<% end %>
+
+
+
+<%# <%= link_to "(later) See on map", root_path %>
