@@ -86,7 +86,7 @@ plug = Plug.create!(
   plug_type: rand(1..2),
   location: "Bayerstraße 12, München",
   availability: [0, 1].sample,
-  description: Faker::Lorem.paragraph,
+  description: @description.sample,
   fixed_cost_per_15_min: rand(1..6),
   user: user2
 )
@@ -109,7 +109,7 @@ plug = Plug.create!(
   plug_type: rand(1..2),
   location: "Bayerstraße 12, München",
   availability: [0, 1].sample,
-  description: Faker::Lorem.paragraph,
+  description: @description.sample,
   fixed_cost_per_15_min: rand(1..6),
   user: user1
 )

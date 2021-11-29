@@ -1,5 +1,6 @@
 class PlugsController < ApplicationController
   def show
+    @plugs = policy_scope(Plug)
   end
 
   def index
