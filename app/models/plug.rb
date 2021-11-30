@@ -2,6 +2,7 @@ class Plug < ApplicationRecord
   belongs_to :user
   has_many :bookings, dependent: :destroy
   geocoded_by :location
+  has_many :reviews, through: :bookings
 
   validates :plug_type, presence: true, inclusion: { in: [1, 2] }
   validates :availability, presence: true
