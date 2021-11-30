@@ -1,4 +1,4 @@
-<div class="booking-container" id="notpopup">
+<div class="booking-container">
   <div style="height: 70vh; width:100vw;" id="map"
         data-controller="mapbox"
         data-mapbox-markers-value="<%= @marker.to_json %>"
@@ -19,21 +19,9 @@
           <p data-booking-info-target="cost" id="cost">$0.00</p>
         </div>
       </div>
-      <%= link_to "Stop Booking", bookings_stop_path(@plug, @booking), class:"stop-button-press" %>
+      <div class="stop-button">
+        <%= link_to "Stop Booking", bookings_stop_path(@plug, @booking), class:"stop-button-press" %>
+      </div>
     </div>
   </div>
 </div>
-
-
-<script>
-  // function myFunction() {
-  //   const popup = document.getElementById("popup");
-  //   const notPopup = document.querySelector('#notpopup')
-  //   notPopup.classList.toggle("hide")
-  //   popup.classList.toggle("show");
-  //   popup.innerText = `
-  //     Duration: ${formatTime(seconds)}
-  //     Cost: $${cost.toFixed(2)}
-  //   `
-  // }
-</script>
