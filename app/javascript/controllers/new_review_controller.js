@@ -1,6 +1,6 @@
 import { Controller } from "stimulus"
 export default class extends Controller {
-  static targets = ["duration", "tab", "form", "submit"]
+  static targets = ["duration", "tab", "form"]
   static values = {
     seconds: Number
   }
@@ -8,7 +8,6 @@ export default class extends Controller {
   connect() {
     this.timer = 0
     this.review_listener()
-    this.submit_listener()
     this.durationTarget.innerText = this.formatTime(this.secondsValue)
   }
 
@@ -19,14 +18,14 @@ export default class extends Controller {
     })
   }
 
-  submit_listener() {
-      this.submitTarget.addEventListener("submit", (event) => {
-        this.tabTarget.innerText = "Review saved"
-        this.formTarget.classList.toggle("d-table")
-        this.formTarget.classList.toggle("d-none")
-        this.submitTarget.innerText = "Saved"
-      })
-  }
+  // submit_listener() {
+  //     this.submitTarget.addEventListener("submit", (event) => {
+  //       this.tabTarget.innerText = "Review saved"
+  //       this.formTarget.classList.toggle("d-table")
+  //       this.formTarget.classList.toggle("d-none")
+  //       this.submitTarget.innerText = "Saved"
+  //     })
+  // }
 
 
   formatTime(seconds) {

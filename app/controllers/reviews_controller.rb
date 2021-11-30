@@ -12,7 +12,11 @@ class ReviewsController < ApplicationController
     @review.booking = @booking
     @review.review_type = 1
     authorize @review
-    render :new unless @review.save
+    if @review.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def strong_params
