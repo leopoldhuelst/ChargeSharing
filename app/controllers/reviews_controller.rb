@@ -9,7 +9,6 @@ class ReviewsController < ApplicationController
   def create
     @booking = Booking.find(params[:id])
     @review = Review.new(strong_params)
-    # authorize @review
     @review.booking = @booking
     @review.review_type = 1
     authorize @review
