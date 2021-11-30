@@ -20,6 +20,17 @@
   filter: none;
 }
 
+#notpopup {
+  transition: 0.4s;
+  filter: none;
+}
+
+#notpopup.hide {
+  transition: 0.4s;
+  filter: blur(2px);
+}
+
+
 #notmenu.hide {
   // filter: brightness(50%);
   transition: 0.4s;
