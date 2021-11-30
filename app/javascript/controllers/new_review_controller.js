@@ -1,3 +1,4 @@
+import { Tab } from "bootstrap"
 import { Controller } from "stimulus"
 export default class extends Controller {
   static targets = ["duration", "tab", "form"]
@@ -12,7 +13,7 @@ export default class extends Controller {
   }
 
   listener() {
-    document.addEventListener(("click"), (event) => {
+    this.tabTarget.addEventListener(("click"), (event) => {
       this.formTarget.classList.toggle("d-table")
       this.formTarget.classList.toggle("d-none")
     })
