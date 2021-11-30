@@ -15,9 +15,20 @@
 
 .logo.charger {
   padding-top: 36px;
-  h2 {
-    font-size: 30px;
+  margin-bottom: 14px;
+  h3 {
     color: rgb(114, 114, 114);
     font-family: 'Poppins', sans-serif;
+    font-size: 23px;
+    font-weight: 600;
+    text-align: center;
+    margin: 0px;
+    line-height: 20px;
+  }
+  h2 {
+    font-size: 37px;
+    color: rgb(114, 114, 114);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
   }
 }

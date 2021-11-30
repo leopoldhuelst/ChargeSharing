@@ -1,27 +1,36 @@
-<div class="logo charger">
-  <h2>MY CHARGERS</h2>
-</div>
+<div id="mychargerspage">
+  <%# <% if @user.plugs.last %>
+  <%# <% else %>
+    <div class="logo charger">
+      <h3><%= @user.first_name %> <%= @user.last_name %>'s</h3>
+      <h2 style="margin-top:5px">Charger-page</h2>
+      <%# <div style="display:flex;justify-content:space-between;margin-top:5px;padding:0px 4px"><h2>C</h2><h2>H</h2><h2>A</h2><h2>R</h2><h2>G</h2><h2>E</h2><h2>R</h2><div style="width:10px"></div><h2>P</h2><h2>A</h2><h2>G</h2><h2>E</h2></div> %>
+    </div>
+  <%# <% end %>
 
-<% if @user.plugs.last %>
-  <% @user.plugs.each do |plug| %>
-    <%= link_to edit_plug_path(plug), style: "text-decoration:none" do %>
-      <div class="charger-card">
-        <h3><%= plug.location %></h3>
-        <% if plug.availability == 1 %>
-          <div class="tab-content-separator"></div>
-          <p>Currently Booked</p>
-        <% end %>
-      </div>
-    <% end %>
+  <% if @user.plugs.last %>
+    <div class="chargercard">
+      <%= link_to edit_plug_path(@user.plugs[0]) do %>
+        <h3>YOUR CHARGER AT<br><%= @user.plugs[0].location.upcase %></h3>
+      <% end %>
+      <% @user.plugs[1..-1].each do |plug| %>
+        <div class="tab-content-separator"></div>
+          <%= link_to edit_plug_path(plug) do %>
+            <h3>YOUR CHARGER AT<br><%= plug.location.upcase %></h3>
+          <% end %>
+      <% end %>
+    </div>
+    <p style="font-size:13px;text-align:center;color:rgb(114, 114, 114)">Click one, to see details and press + to add a new one!</p>
+  <% else %>
+    <div class="chargercard">
+      <h2>Press + at the bottom.</h2>
+    </div>
   <% end %>
-<% else %>
-  <h2>No plugs yet</h2>
-<% end %>
 
-<%= link_to plugs_new_path do %>
-  <div class="back-button">+</div>
-<% end %>
-
+  <%= link_to plugs_new_path do %>
+    <div class="back-button" style="transition:2s">+</div>
+  <% end %>
+</div>
 
 
 <%# <%= link_to "(later) See on map", root_path %>

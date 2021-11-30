@@ -28,7 +28,11 @@ class PlugsController < ApplicationController
     @plug.user = current_user
     authorize @plug
     if @plug.save
-      redirect_to dashboard_path
+      if current_user.plugs.count == 1
+        redirect_to edit_plug_path(@plug)
+      else
+        redirect_to dashboard_path
+      end
     else
       render :new
     end
@@ -56,7 +60,11 @@ class PlugsController < ApplicationController
     plug = Plug.find(id)
     plug.destroy
     authorize plug
-    redirect_to dashboard_path
+    if current_user.plugs.count == 1
+      redirect_to edit_plug_path(current_user.plugs.last)
+    else
+      redirect_to dashboard_path
+    end
   end
 
   private

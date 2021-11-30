@@ -28,13 +28,18 @@
                   input_html: {value: 0} %>
     </div>
     <div class="tab-content-separator"></div>
-    <%# <div class="submit-buttons"> %>
-      <%= f.submit "Create charger" %>
-      <%#= link_to "Create charger", dashboard_path, method: post %>
-    <%# </div> %>
+    <div class="submit-buttons">
+      <%= f.button :submit, "Create!" %>
+    </div>
   <% end %>
 </div>
 
 <%= link_to :back do %>
     <div class="back-button" style="padding-right:3px;padding-bottom:2px"><i class="fas fa-angle-left"></i></div>
 <% end %>
+
+<br>
+<br>
+<br>
+<br>
+<br>

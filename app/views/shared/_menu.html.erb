@@ -9,12 +9,12 @@
         <%= link_to 'MY PROFILE', edit_user_registration_path %>
         <br>
         <% if current_user %>
-          <% if current_user.plugs == 0 %>
-            <%= link_to 'ADD A CHARGER', dashboard_path %>
-          <% elsif current_user.plugs.count == 1 %>
+          <% if current_user.plugs.count == 1 %>
             <%= link_to 'MY CHARGER', edit_plug_path(current_user.plugs.last) %>
-          <% else %>
+          <% elsif current_user.plugs.count > 1 %>
             <%= link_to 'MY CHARGERS', dashboard_path %>
+          <% else %>
+            <%= link_to 'ADD CHARGER', dashboard_path %>
           <% end %>
         <% end %>
         <br>
