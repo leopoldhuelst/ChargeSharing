@@ -3,8 +3,11 @@
     <h2>Order summary</h2>
   </div>
   <div class="tab-card-stop-booking" data-controller="new-review" data-new-review-seconds-value="<%= @review.booking.duration %>">
-    <p id="duration-booking" data-new-review-target="duration">Duration : 00:00:00</p>
-    <p>Cost : $<%= @review.booking.cost %></p>
+    <h3>Duration </h3>
+    <p id="duration-booking" data-new-review-target="duration">00:00:00</p>
+    <div class="tab-content-separator"></div>
+    <h3>Cost </h3>
+    <p>$<%= @review.booking.cost %></p>
     <button id="review-button" data-new-review-target="tab">Write Review + <i class="far fa-keyboard"></i></button>
     <div id="add-review" class="d-none" data-new-review-target="form">
       <%= simple_form_for [ @booking, @review ] do |f| %>

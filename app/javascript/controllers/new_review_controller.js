@@ -12,7 +12,7 @@ export default class extends Controller {
   }
 
   listener() {
-    document.addEventListener(("click"), (event) => {
+    this.tabTarget.addEventListener(("click"), (event) => {
       this.formTarget.classList.toggle("d-table")
       this.formTarget.classList.toggle("d-none")
     })
