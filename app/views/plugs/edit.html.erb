@@ -7,7 +7,12 @@
     <div class="tab-content-separator"></div>
     <p style="text-align:center;font-weight:bold" >CURRENTLY BOOKED</p>
   <% end %>
-  <i class="fas fa-cog tab-button edit-button" onclick="editPlug()"></i>
+  <div class="flexbox">
+    <%= link_to destroy_plug_path(params[:id]), method: :delete, data: { confirm: "Are you sure?" } do %>
+      <i class="fas fa-trash tab-button" style="width:28px;height:28px;font-size:14px;padding-top:7px;padding-left:8px"></i>
+    <% end %>
+    <i class="fas fa-cog tab-button edit-button" onclick="editPlug()"></i>
+  </div>
 </div>
 
 <div id="edit-plug-field" class="d-none">

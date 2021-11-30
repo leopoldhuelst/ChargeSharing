@@ -52,6 +52,11 @@ class PlugsController < ApplicationController
   end
 
   def destroy
+    id = params[:id]
+    plug = Plug.find(id)
+    plug.destroy
+    authorize plug
+    redirect_to dashboard_path
   end
 
   private
