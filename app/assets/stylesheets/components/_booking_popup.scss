@@ -1,20 +1,33 @@
 .popup {
   display: inline-block;
+  position: relative;
 }
 
 .popup .popuptext {
   visibility: hidden;
-  width: 15.4rem;
-  background-color: white;
-  color: black;
+  width: 160px;
+  background-color: #555;
+  color: #fff;
   text-align: center;
   border-radius: 6px;
   padding: 8px 0;
   position: absolute;
   z-index: 1;
-  left: 4.1rem;
-  top: -37rem;
-  height: 23rem;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+  // visibility: hidden;
+  // width: 15.4rem;
+  // background-color: white;
+  // color: black;
+  // text-align: center;
+  // border-radius: 6px;
+  // padding: 8px 0;
+  // position: absolute;
+  // z-index: 1;
+  // left: 4.1rem;
+  // top: -37rem;
+  // height: 23rem;
 }
 
 .popup .show {

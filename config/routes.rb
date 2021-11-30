@@ -10,10 +10,10 @@ Rails.application.routes.draw do
   get 'plugs/:plug_id/bookings/:id/stop', to: 'bookings#stop_booking', as: 'bookings_stop'
   delete 'plugs/:id', to: 'plugs#destroy', as: 'destroy_plug'
   resources :plugs, only: %i[index edit update destroy create] do
-    resources :bookings, only: %i[create show] do
-      resources :reviews, only: %i[create]
-    end
+    resources :bookings, only: %i[create show]
   end
+  get 'bookings/:id/reviews/new', to: 'reviews#new', as: 'review_booking_new'
+  post 'bookings/:id/reviews', to: 'reviews#create', as: 'booking_reviews'
   # get '/plugs', to: 'plugs#index'
   # root to: 'plugs#index'
   # post '/plugs/:id/bookings', to: 'bookings#create', as: 'bookings'

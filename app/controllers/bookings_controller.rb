@@ -52,5 +52,8 @@ class BookingsController < ApplicationController
     @booking.save
     @plug.availability = 0
     @plug.save
+
+
+    redirect_to review_booking_new_path(@booking)
   end
 end

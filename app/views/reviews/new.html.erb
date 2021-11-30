@@ -1,0 +1,35 @@
+<div>
+  <div class="logo">
+    <h2>Order summary</h2>
+  </div>
+  <div class="tab-card-stop-booking">
+    <p><%= @review.booking.duration %></p>
+    <p><%= @review.booking.cost %></p>
+    <button id="review-button">Write Review + <i class="far fa-keyboard"></i></button>
+    <div id="add-review" class="d-none">
+      <%= simple_form_for [ @booking, @review ] do |f| %>
+      <div class="form-inputs">
+        <%= f.input :rating %>
+        <%= f.input :contents %>
+      </div>
+      <div class="tab-content-separator"></div>
+      <div class="submit-buttons">
+        <%= f.button :submit, "Create" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <div>
+    <%# <%= link_to "Go back to Home", roots_path %>
+  </div>
+</div>
+
+<script>
+  const button = document.querySelector("#review-button")
+  const form = document.querySelector("#add-review")
+
+  button.addEventListener(("click"), (event) => {
+    form.classList.toggle("d-table")
+    form.classList.toggle("d-none")
+  })
+</script>
