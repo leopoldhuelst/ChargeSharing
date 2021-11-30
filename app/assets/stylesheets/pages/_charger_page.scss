@@ -1,0 +1,30 @@
+#mychargerspage {
+  margin: 0 30px;
+}
+
+.chargercard {
+  border-radius: 8px;
+  padding: 30px;
+  margin-bottom: 4px;
+  background-color: white;
+  color: rgb(114, 114, 114);
+  h2 {
+    font-size: 18px;
+    text-align: center;
+  }
+  h3 {
+    font-size: 18px;
+    text-align: center;
+    color: rgb(114, 114, 114);
+    font-weight: 400;
+  }
+  p {
+    font-size: 12px;
+    line-height: 13px;
+    margin: 8px 0;
+    text-align: center;
+  }
+  a {
+    text-decoration: none;
+  }
+}
