@@ -1,0 +1,45 @@
+<div class="logo charger"><h2><%= current_user.plugs.find(params[:id]).location %></h2></div>
+<div class="charger-card show">
+  <p><strong>Description:</strong> <%= current_user.plugs.find(params[:id]).description %></p>
+  <p><strong>Plug type:</strong> <%= current_user.plugs.find(params[:id]).plug_type %></p>
+  <p><strong>Cost:</strong> $<%= current_user.plugs.find(params[:id]).fixed_cost_per_15_min %> per 15 minutes</p>
+  <% if current_user.plugs.find(params[:id]).availability == 1 %>
+    <div class="tab-content-separator"></div>
+    <p style="text-align:center;font-weight:bold" >CURRENTLY BOOKED</p>
+  <% end %>
+  <i class="fas fa-cog tab-button edit-button" onclick="editPlug()"></i>
+</div>
+
+<div id="edit-plug-field" class="d-none">
+  <%= simple_form_for @plug do |f| %>
+    <%= f.input :location,
+      required: false,
+      input_html: { autocomplete: "location" } %>
+    <%= f.input :description,
+      required: false,
+      input_html: { autocomplete: "description" } %>
+    <%= f.input :fixed_cost_per_15_min,
+      required: false,
+      input_html: { autocomplete: "fixed_cost_per_15_min" } %>
+    <%= f.input :plug_type,
+      required: false,
+      input_html: { autocomplete: "plug_type" } %>
+    <%= f.submit "Save changes" %>
+  <% end %>
+</div>
+
+
+
+
+
+
+
+<% if current_user.plugs.count > 1 %>
+  <%= link_to dashboard_path do %>
+    <div class="back-button" style="padding-right:3px;padding-bottom:2px"><i class="fas fa-angle-left"></i></div>
+  <% end %>
+<% else %>
+  <%= link_to plugs_new_path do %>
+    <div class="back-button">+</div>
+  <% end %>
+<% end %>

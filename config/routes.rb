@@ -4,9 +4,11 @@ Rails.application.routes.draw do
   resources :users, only: %i[show edit update]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get '/dashboard', to: 'dashboards#show', as: 'dashboard'
+  get 'plugs/new', to: 'plugs#new'
+  post 'plugs', to: 'plugs#create'
   get 'plugs/:id/bookings/approve', to: 'bookings#approve', as: 'bookings_approve'
   get 'plugs/:plug_id/bookings/:id/stop', to: 'bookings#stop_booking', as: 'bookings_stop'
-  resources :plugs, only: [:index] do
+  resources :plugs, only: %i[index edit update destroy create] do
     resources :bookings, only: %i[create show]
   end
   # get '/plugs', to: 'plugs#index'

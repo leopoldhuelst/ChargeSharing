@@ -1,0 +1,40 @@
+<div class="logo">
+  <h2>New Plug Details</h2>
+</div>
+
+<div class="input-field">
+  <%= simple_form_for(@plug) do |f| %>
+    <div class="form-inputs">
+      <%= f.input :location,
+                  required: true,
+                  autofocus: true,
+                  placeholder: 'eg. Brienner Str. 50, München' %>
+      <%= f.input :fixed_cost_per_15_min,
+                  required: true,
+                  autofocus: true,
+                  as: :numeric,
+                  placeholder: 'eg. $0.50' %>
+      <%= f.input :plug_type,
+                  collection: [1, 2],
+                  required: true,
+                  autofocus: true %>
+      <%= f.input :description,
+                  required: true,
+                  autofocus: true,
+                  placeholder: 'Describe your plug' %>
+      <%= f.input :availability,
+                  required: true,
+                  as: :hidden,
+                  input_html: {value: 0} %>
+    </div>
+    <div class="tab-content-separator"></div>
+    <%# <div class="submit-buttons"> %>
+      <%= f.submit "Create charger" %>
+      <%#= link_to "Create charger", dashboard_path, method: post %>
+    <%# </div> %>
+  <% end %>
+</div>
+
+<%= link_to :back do %>
+    <div class="back-button" style="padding-right:3px;padding-bottom:2px"><i class="fas fa-angle-left"></i></div>
+<% end %>

@@ -31,14 +31,14 @@
   border-inline: 3px solid red;
 }
 
-#profile-edit-button {
+.edit-button {
   // position: absolute;
   display: block;
   transition: 0.6s;
 
 }
 
-#profile-edit-button.select{
+.edit-button.select{
   // position: absolute;
   background-color: white;
   color: $default-red;

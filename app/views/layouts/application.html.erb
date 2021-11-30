@@ -46,8 +46,13 @@
         document.querySelector('#tab-3-content').classList.add("select");
       }
       function editProfile() {
-        document.querySelector('#profile-edit-button').classList.toggle("select");
+        document.querySelector('.edit-button').classList.toggle("select");
         document.querySelector('#edit-profile-field').classList.toggle("d-none");
+        // document.querySelector('#edit-profile-field').classList.toggle("hide");
+      }
+      function editPlug() {
+        document.querySelector('.edit-button').classList.toggle("select");
+        document.querySelector('#edit-plug-field').classList.toggle("d-none");
         // document.querySelector('#edit-profile-field').classList.toggle("hide");
       }
     </script>

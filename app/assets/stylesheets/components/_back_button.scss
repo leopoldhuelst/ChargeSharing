@@ -1,0 +1,14 @@
+.back-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 30px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: $default-red;
+  position: fixed;
+  top: calc(100vh - 100px);
+  left: 55px;
+}

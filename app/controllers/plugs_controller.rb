@@ -1,5 +1,6 @@
 class PlugsController < ApplicationController
   def show
+    @plugs = policy_scope(Plug)
   end
 
   def index
@@ -18,18 +19,44 @@ class PlugsController < ApplicationController
   end
 
   def new
-  end
-
-  def create
+    @plug = Plug.new
     authorize @plug
   end
 
+  def create
+    @plug = Plug.new(strong_params)
+    @plug.user = current_user
+    authorize @plug
+    if @plug.save
+      redirect_to dashboard_path
+    else
+      render :new
+    end
+  end
+
   def edit
+    @user = current_user
+    @plug = Plug.find(params[:id])
+    authorize @plug
+    render :edit
   end
 
   def update
+    @plug = Plug.find(params[:id])
+    authorize @plug
+    if @plug.update(strong_params)
+      redirect_to edit_plug_path(@plug)
+    else
+      render :edit
+    end
   end
 
   def destroy
+  end
+
+  private
+
+  def strong_params
+    params.require(:plug).permit(:location, :description, :fixed_cost_per_15_min, :plug_type, :availability)
   end
 end

@@ -86,7 +86,7 @@ plug = Plug.create!(
   plug_type: rand(1..2),
   location: "Bayerstraße 12, München",
   availability: [0, 1].sample,
-  description: Faker::Lorem.paragraph,
+  description: @description.sample,
   fixed_cost_per_15_min: rand(1..6),
   user: user2
 )
@@ -110,7 +110,7 @@ plug = Plug.create!(
   plug_type: rand(1..2),
   location: "Bayerstraße 12, München",
   availability: [0, 1].sample,
-  description: Faker::Lorem.paragraph,
+  description: @description.sample,
   fixed_cost_per_15_min: rand(1..6),
   user: user1
 )
@@ -131,5 +131,16 @@ booking = Booking.create!(
     booking: booking
   )
 end
+
+# user without anything
+
+User.create!(
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  birthdate: Faker::Date.birthday(min_age: 18, max_age: 80),
+  plug_type: rand(1..2),
+  email: "jesus@flippin.com",
+  password: "123456"
+)
 
 puts 'data generated you monkey!'
