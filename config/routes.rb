@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post 'plugs', to: 'plugs#create'
   get 'plugs/:id/bookings/approve', to: 'bookings#approve', as: 'bookings_approve'
   get 'plugs/:plug_id/bookings/:id/stop', to: 'bookings#stop_booking', as: 'bookings_stop'
+  delete 'plugs/:id', to: 'plugs#destroy', as: 'destroy_plug'
   resources :plugs, only: %i[index edit update destroy create] do
     resources :bookings, only: %i[create show]
   end
