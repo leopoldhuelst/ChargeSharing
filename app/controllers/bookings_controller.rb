@@ -5,7 +5,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     authorize @booking
     @plug = @booking.plug
-    @start_time = @booking.created_at
+    @start_time = Time.now - @booking.created_at
     @marker = [{
       lat: @plug.latitude,
       lng: @plug.longitude,
