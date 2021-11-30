@@ -5,11 +5,11 @@
         data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
   <div class="booking-info" style="height: 25vh" data-controller="booking-info"
-  data-booking-info-cost-per-second-value="<%= @plug.fixed_cost_per_15_min %>"
-  data-booking-info-seconds-value="<%= @start_time.to_i %>">
+  data-booking-info-seconds-value="<%= @start_time.to_i %>"
+  data-booking-info-cost-per-min-value="<%= @plug.fixed_cost_per_15_min %>">
     <div class="booking-info-text">
       <p><%= @plug.location %></p>
-      <div class="booking-info-text-values">
+      <div class=booking-info-text-values>
         <div class="booking-info-text-values-time">
           <p>Start-time: <%= @booking.created_at.strftime('%l:%M %p') %></p>
           <p data-booking-info-target="time" id="time">00:00:00</p>
@@ -26,40 +26,6 @@
 
 
 <script>
-    let timer = undefined
-    let cost_calculation = undefined
-    let cost_per_15_min = undefined
-    let cost_per_second = undefined
-    let cost = undefined
-    let seconds = undefined
-
-    timer = document.querySelector('#time');
-    cost_calculation = document.querySelector('#cost');
-    cost_per_15_min = <%= @plug.fixed_cost_per_15_min %>
-    cost_per_second = cost_per_15_min / 900
-    cost = 0
-    seconds = <%= @start_time.to_i %>
-
-  setInterval(function () {
-    seconds += 1;
-    cost = seconds * cost_per_second
-    console.log(cost)
-    console.log(seconds)
-    timer.innerText = formatTime(seconds);
-    cost_calculation.innerText = `$${String(cost.toFixed(2))}`
-  }, 1000);
-
-  function formatTime(seconds) {
-    const hours = Math.floor(seconds / 3600)
-    const minutes = Math.floor((seconds % 3600) / 60);
-    seconds = seconds % 60;
-    return (
-      String(hours).padStart(2, '0') + ':' + String(minutes).padStart(2, '0') + ':' + String(seconds).padStart(2, '0')
-    );
-  }
-
-  // location.reload();
-
   // function myFunction() {
   //   const popup = document.getElementById("popup");
   //   const notPopup = document.querySelector('#notpopup')

@@ -1,42 +1,40 @@
-// import { Controller } from "stimulus"
-// export default class extends Controller {
-//   static targets = ["cost", "time"]
-//   static values = {
-//     costPerSecond: Number,
-//     seconds: Number
-//   }
+import { Controller } from "stimulus"
+export default class extends Controller {
+  static targets = ["cost", "time"]
+  static values = {
+    costPerMin: Number,
+    seconds: Number,
+    cost: { type: Number, default: 0 }
+  }
 
-//   connect() {
-//     console.log("morning")
-//     console.log(this.costTarget)
-//     console.log(this.timeTarget)
-//     console.log(typeof this.costPerSecondValue)
-//     console.log(typeof this.secondsValue)
-//     let cost_per_second = this.costPerSecondValue / 900
-//     let cost = 0
+  connect() {
+    this.timer = setInterval(() => {
+      this.setTimeAndCost()
+    }, 1000)
+  }
 
-//     const setTimeAndCost = () => {
-//       this.timeTarget.innerText = formatTime(this.secondsValue);
-//       this.costTarget.innerText = `$${String(cost.toFixed(2))}`
-//     }
+  setTimeAndCost() {
+    this.secondsValue += 1
+    this.costValue = this.secondsValue * (this.costPerMinValue / 900)
+    this.timeTarget.innerText = this.formatTime(this.secondsValue)
+    this.costTarget.innerText = `$${String(this.costValue.toFixed(2))}`
+  }
 
-//     setInterval(function () {
-//       this.secondsValue += 1;
-//       cost = this.secondsValue * cost_per_second
-//       console.log(cost)
-//       console.log(this.secondsValue)
-//       setTimeAndCost()
-//       // this.timeTarget.innerText = formatTime(this.secondsValue);
-//       // this.costTarget.innerText = `$${String(cost.toFixed(2))}`
-//     }, 1000);
-
-//     function formatTime(seconds) {
-//       const hours = Math.floor(seconds / 3600)
-//       const minutes = Math.floor((seconds % 3600) / 60);
-//       seconds = seconds % 60;
-//       return (
-//         String(hours).padStart(2, '0') + ':' + String(minutes).padStart(2, '0') + ':' + String(seconds).padStart(2, '0')
-//       );
-//     }
-//   }
-// }
+  formatTime(seconds) {
+    const hours = Math.floor(seconds / 3600)
+    const minutes = Math.floor((seconds % 3600) / 60)
+    seconds = seconds % 60
+    return (
+      String(hours).padStart(2, "0") +
+      ":" +
+      String(minutes).padStart(2, "0") +
+      ":" +
+      String(seconds).padStart(2, "0")
+    )
+  }
+  disconnect() {
+    if (this.timer) {
+      clearInterval(this.timer)
+    }
+  }
+}
