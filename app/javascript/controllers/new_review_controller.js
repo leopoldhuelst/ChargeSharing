@@ -7,16 +7,25 @@ export default class extends Controller {
 
   connect() {
     this.timer = 0
-    this.listener()
+    this.review_listener()
     this.durationTarget.innerText = this.formatTime(this.secondsValue)
   }
 
-  listener() {
+  review_listener() {
     this.tabTarget.addEventListener(("click"), (event) => {
       this.formTarget.classList.toggle("d-table")
       this.formTarget.classList.toggle("d-none")
     })
   }
+
+  // submit_listener() {
+  //     this.submitTarget.addEventListener("submit", (event) => {
+  //       this.tabTarget.innerText = "Review saved"
+  //       this.formTarget.classList.toggle("d-table")
+  //       this.formTarget.classList.toggle("d-none")
+  //       this.submitTarget.innerText = "Saved"
+  //     })
+  // }
 
 
   formatTime(seconds) {
