@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   get 'plugs/:id/bookings/approve', to: 'bookings#approve', as: 'bookings_approve'
   get 'plugs/:plug_id/bookings/:id/stop', to: 'bookings#stop_booking', as: 'bookings_stop'
   resources :plugs, only: %i[index edit update destroy create] do
-    resources :bookings, only: %i[create show]
+    resources :bookings, only: %i[create show] do
+      resources :reviews, only: %i[create]
+    end
   end
   # get '/plugs', to: 'plugs#index'
   # root to: 'plugs#index'
