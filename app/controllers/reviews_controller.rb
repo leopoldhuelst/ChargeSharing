@@ -1,19 +1,22 @@
 class ReviewsController < ApplicationController
-  # def new
-  #   @review = Review.new
-  #   authorize @review
-  # end
+  def new
+    @review = Review.new
+    @booking = Booking.find(params[:id])
+    @review.booking = @booking
+    authorize @review
+  end
 
   def create
     @booking = Booking.find(params[:id])
     @review = Review.new(strong_params)
-    authorize @review
+    # authorize @review
     @review.booking = @booking
-
-    render :back unless @review.save
+    @review.review_type = 1
+    authorize @review
+    render :new unless @review.save
   end
 
   def strong_params
-    params.require[:review].permit[:rating, :content]
+    params.require(:review).permit(:rating, :contents)
   end
 end
