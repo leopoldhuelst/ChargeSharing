@@ -11,12 +11,12 @@
   <% if @user.plugs.last %>
     <div class="chargercard">
       <%= link_to edit_plug_path(@user.plugs[0]) do %>
-        <h3>YOUR CHARGER AT<br><%= @user.plugs[0].location.upcase %></h3>
+        <h3>Your <span style="font-weight:600">TYPE <%= @user.plugs[0].plug_type %></span> Charger at <span style="font-weight:600"><%= @user.plugs[0].location.upcase %></span></h3>
       <% end %>
       <% @user.plugs[1..-1].each do |plug| %>
         <div class="tab-content-separator"></div>
           <%= link_to edit_plug_path(plug) do %>
-            <h3>YOUR CHARGER AT<br><%= plug.location.upcase %></h3>
+            <h3>Your <span style="font-weight:600">TYPE <%= plug.plug_type %></span> Charger at <span style="font-weight:600"><%= plug.location.upcase %></span></h3>
           <% end %>
       <% end %>
     </div>
