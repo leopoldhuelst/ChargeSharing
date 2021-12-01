@@ -15,11 +15,11 @@ puts 'Generating new Data...'
 # this is the data used to generate everything
 # its exactly 8 per category because there are always 8 records per table!
 @addresses = ["Brienner Str. 50, München", "Königsplatz 1, München", "Neuhauser Straße 27, München", "Kardinal-Faulhaber-Straße 1, München", "Rosental 9, München", "Hohenzollernstraße 103, 80796 München", "Rosenheimer Str. 90, 81669 München", "Claudius-Keller-Straße 2, 81669 München"]
-@descriptions = ["Just got this new baby! Its located in my garage, please ask for keys...", "It's powered with solar energy, so don't come here at night", "Rooftop charger with beatiful view over munich skyline", "If you're hot you can drive my i8 while your car is charging (he/him)", "Pleeease DON'T bring all of your friends guys!!!", " helo jus bought charger ! plesa charg so i can buy carr soon e", "Just here to ask what happened to airbnfight??", "Roses are red, violets are blue. This is the charger. I'm waiting for you!"]
+@descriptions = ["Just got this new baby! Its located in my garage, please ask for keys...", "It's powered with solar energy, so don't come here at night", "Rooftop charger with beatiful view over munich skyline", "If you're hot you can drive my i8 while your car is charging (he/him)", "Pleeease DON'T bring all of your friends guys!!!", " helo jus bought charger ! plesa charg so i can buy carr soon e", "Just here to ask what happened to airbnfight??", "'Roses are red, violets are blue. The charger is speaking. I'm waiting for you!'"]
 # For personal data, always the last four is one of us
-@first_names = ["Mike", "Ben", "Justin", "Hugh", "Jonas", "Leopold", "Adam", "Benjamin"]
-@last_names = ["Hawkslong", "Dover", "Credible", "Jass", "Stannowski", "Huelst", "Kerr", "Dohna"]
-@emails = ["mike@hawkslong.com", "ben@dover.com", "justin@credible.com", "hugh@jazz.com", "jonas@stannowski.com", "leopold@huelst.com", "adam@kerr.com", "benjamin@dohna.com"]
+@first_names = ["Mike", "Joe", "Justin", "Hugh", "Jonas", "Leopold", "Adam", "Benjamin"]
+@last_names = ["Oxlong", "Mamer", "Credible", "Jass", "Stannowski", "Huelst", "Kerr", "Dohna"]
+@emails = ["mike@oxlong.com", "joe@mamer.com", "justin@credible.com", "hugh@jazz.com", "jonas@stannowski.com", "leopold@huelst.com", "adam@kerr.com", "benjamin@dohna.com"]
 # this is the counter that counts through all the seeding process for index purposes
 @index = rand(-8..0)
 # youll understand that later (its for uniqe booking creation)
