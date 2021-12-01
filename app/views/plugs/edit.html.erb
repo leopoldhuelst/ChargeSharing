@@ -1,6 +1,6 @@
 <div class="logo charger">
   <h3><%= @user.first_name %> <%= @user.last_name %>'s</h3>
-  <h2 style="margin-top:5px">Charger-page</h2>
+  <h2 style="margin-top:5px">CHARGE SHARING</h2>
   <%# <div style="display:flex;justify-content:space-between;margin-top:5px;padding:0px 4px"><h2>C</h2><h2>H</h2><h2>A</h2><h2>R</h2><h2>G</h2><h2>E</h2><h2>R</h2><div style="width:10px"></div><h2>P</h2><h2>A</h2><h2>G</h2><h2>E</h2></div> %>
 </div>
 
@@ -8,13 +8,13 @@
   <%# page content  %>
   <h2>Your <span style="font-weight:600">TYPE <%= @plug.plug_type %></span> Charger at <span style="font-weight:600"><%= @plug.location.upcase %></span></h2>
   <div class="tab-content-separator"></div>
-  <h3 style="margin-top:30px"><span style="font-weight:600">The costs:</span><br>Current costs: $<%= @plug.fixed_cost_per_15_min %>/15m</h3>
+  <h3 style="margin-top:30px"><span style="font-weight:600">COST:</span><br>$<%= @plug.fixed_cost_per_15_min %> per 15 min</h3>
   <br>
-  <h3><span style="font-weight:600">It's description:</span><br><%= @plug.description %></h3>
+  <h3><span style="font-weight:600">DESCRIPTION:</span><br><%= @plug.description %></h3>
   <br>
   <%# for the average reviews  %>
   <h3>
-    <span style="font-weight:600">Average rating:</span><br>
+    <span style="font-weight:600">AVERAGE RATING:</span><br>
     <% if @plug.reviews.count > 0 %>
       <%# this is all for the average star rating from here... %>
       <% total = 0 %>
@@ -45,7 +45,7 @@
     <i class="fas fa-cog tab-button edit-button" onclick="editPlug()"></i>
   </div>
 </div>
-<p style="font-size:13px;text-align:center;color:rgb(114, 114, 114)">Press + to add new chargers!</p>
+<p style="font-size:13px;text-align:center;color:rgb(114, 114, 114)"></p>
 
 
 <%# the edit field  %>

@@ -2,20 +2,21 @@
   border-radius: 8px;
   padding: 10px;
   padding-bottom: 0;
-  padding-top: 50px;
-  margin: 0px 30px 30px 30px;
+  padding-top: 45px;
+  margin: 0px 30px 4px 30px;
   background-color: rgb(228, 228, 228);
   color: rgb(114, 114, 114);
   width: calc(100% - 60px);
   h2 {
-    font-size: 30px;
+    font-size: 40px;
+    font-weight: 600;
     color: rgb(114, 114, 114);
   }
   h3 {
     font-size: 15px;
   }
   p {
-    font-size: 12px;
+    font-size: 18px;
     margin-top: 6px;
     margin-bottom: 0px;
   }
@@ -57,6 +58,8 @@
   border: 3px solid $default-red;
   opacity: 1;
   transition: opacity 1s;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 18px;
 }
 
 // #edit-profile-field.hide {
