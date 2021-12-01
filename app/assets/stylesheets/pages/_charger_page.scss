@@ -1,13 +1,18 @@
 #mychargerspage {
   margin: 0 30px;
+  a {
+    text-decoration: none;
+  }
 }
 
 .chargercard {
   border-radius: 8px;
   padding: 30px;
   margin-bottom: 4px;
+  margin-top: 14px;
   background-color: white;
   color: rgb(114, 114, 114);
+  height: 120px;
   h2 {
     font-size: 18px;
     text-align: center;
@@ -24,7 +29,12 @@
     margin: 8px 0;
     text-align: center;
   }
-  a {
-    text-decoration: none;
-  }
+
+}
+
+.header-div {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
 }

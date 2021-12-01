@@ -106,26 +106,55 @@
 
 
 <div id="tab-1-content">
-  <div class="tab-card">
-    <h2>Latest booking</h2>
-    <% inactive_bookings = @user.bookings.where("status = 1") %>
-    <% unless inactive_bookings.empty? %>
-      <div class="tab-content-separator"></div>
-      <p><%= inactive_bookings[-1].created_at.strftime('%A, %d %b') %></p>
-      <p><%= inactive_bookings[-1].created_at.strftime('%l:%M %p') %> - <%=  (inactive_bookings[-1].created_at + (inactive_bookings[-1].duration / 60)).strftime('%l:%M %p') %></p>
-      <p><%= inactive_bookings[-1].plug.location%></p>
-    <p>Write Review + <i class="far fa-keyboard"></i></p>
-    <% else %>
-      <div class="tab-content-separator"></div>
-      <p>No bookings yet</p>
-      <p><%= link_to 'Go to map', root_path, style: "z-index:99999" %></p>
-    <% end %>
-  </div>
+  <%# <div class="tab-card">
+    <h2>Latest booking</h2>  %>
+    <%# inactive_bookings = @user.bookings.where("status = 1").first %>
+    <%# unless inactive_bookings.empty? %>
+      <%# <div class="tab-content-separator"></div> %>
+      <p><%#= inactive_bookings[-1].created_at.strftime('%A, %d %b') %></p>
+      <p><%#= inactive_bookings[-1].created_at.strftime('%l:%M %p') %> <%#=  (inactive_bookings[-1].created_at + (inactive_bookings[-1].duration / 60)).strftime('%l:%M %p') %></p>
+      <p><%#= inactive_bookings[-1].plug.location%></p>
+    <%# <p>Write Review + <i class="far fa-keyboard"></i></p> %>
+    <%# else %>
+      <%# <div class="tab-content-separator"></div>
+      <p>No bookings yet</p> %>
+      <p><%#= link_to 'Go to map', root_path, style: "z-index:99999" %></p>
+    <%# end %>
+  <%# </div> %>
 </div>
 
 <%# Reviewstab HTML %>
 
 <div id="tab-2-content">
+<<<<<<< HEAD
+  <% if @user.bookings.last %>
+
+    <% @user.bookings.each do |booking| %>
+      <div class="tab-card">
+
+
+
+
+        <h3>You were booking <%= booking.plug.user.first_name %> <%= booking.plug.user.last_name %>'s Plug</h3>
+        <div class="tab-content-separator"></div>
+
+        <%# users review  %>
+        <p><strong>Your</strong> Rating</p>
+
+        <%# the stars %>
+        <% num = booking.reviews.where("review_type = 0").first.rating %>
+        <p>
+          <% num.times do %>
+            <i class="fas fa-star small "></i>
+          <% end %>
+          <% (5-num).times do %>
+            <i class="far fa-star small "></i>
+          <% end %>
+        </p>
+
+        <%# the content  %>
+        <p>"<%= booking.reviews.where("review_type = 0").first.contents %>"</p>
+=======
   <div class="tab-card">
     <h3>REVIEWS GIVEN <i class="fas fa-paper-plane"></i></h3>
       <% if @user.reviews.last %>
@@ -154,8 +183,14 @@
     <h3>REVIEWS RECEIVED <i class="fas fa-mail-bulk"></i></h3>
     <% if @user.reviews_as_owner.last %>
       <% @user.reviews_as_owner.each do |review| %>
+>>>>>>> master
         <div class="tab-content-separator"></div>
-        <% num = review.rating.to_i %>
+
+        <%# the providers review  %>
+        <p><strong><%= booking.plug.user.first_name %> <%= booking.plug.user.last_name %></strong>'s Rating</p>
+
+        <%# the stars  %>
+        <% num = booking.reviews.where("review_type = 0").first.rating %>
         <p>
           <% num.times do %>
             <i class="fas fa-star small "></i>
@@ -164,17 +199,71 @@
             <i class="far fa-star small "></i>
           <% end %>
         </p>
-        <p>"<%= review.contents %>"</p>
-        <%# <p>by <%= review.booking.user.first_name %> <%#= review.booking.user.last_name %></p>
-        <p><%= review.booking.created_at.strftime('%A, %d %b') %></p>
-      <% end %>
-    <% else %>
-      <div class="tab-content-separator"></div>
-      <p>No received reviews yet</p>
-      <p><%= link_to 'Go to map', root_path, style: "z-index:99999" %></p>
+
+        <%# the content  %>
+        <p>"<%= booking.reviews.where("review_type = 1").first.contents %>"</p>
+
+
+
+      </div>
     <% end %>
-  </div>
+
+    <% @user.bookings_as_owner.each do |booking|  %>
+      <div class="tab-card">
+
+
+        <h3><%= booking.user.first_name %> <%= booking.user.last_name %> was booking Your Plug</h3>
+        <div class="tab-content-separator"></div>
+
+        <%# users review (as provider) %>
+        <p><strong>Your</strong> Rating</p>
+
+        <%# the stars %>
+        <% num = booking.reviews.where("review_type = 0").first.rating %>
+        <p>
+          <% num.times do %>
+            <i class="fas fa-star small "></i>
+          <% end %>
+          <% (5-num).times do %>
+            <i class="far fa-star small "></i>
+          <% end %>
+        </p>
+
+        <%# the content  %>
+        <p>"<%= booking.reviews.where("review_type = 1").first.contents %>"</p>
+        <div class="tab-content-separator"></div>
+
+        <%# the users review  %>
+        <p><strong><%= booking.user.first_name %> <%= booking.user.last_name %></strong>'s Rating</p>
+
+        <%# the stars  %>
+        <% num = booking.reviews.where("review_type = 0").first.rating %>
+        <p>
+          <% num.times do %>
+            <i class="fas fa-star small "></i>
+          <% end %>
+          <% (5-num).times do %>
+            <i class="far fa-star small "></i>
+          <% end %>
+        </p>
+
+        <%# the content  %>
+        <p>"<%= booking.reviews.where("review_type = 0").first.contents %>"</p>
+
+      </div>
+    <% end %>
+
+
+  <% else %>
+    <div class="tab-card">
+      <div class="tab-content-separator"></div>
+      <p>No bookings, no reviews!</p>
+      <p><%= link_to 'Let\'s book', root_path, style: "z-index:99999"%></p>
+    </div>
+  <% end %>
 </div>
+
+
 
 
 <%# Bookings-tab HTML %>
@@ -184,7 +273,7 @@
   <div class="tab-card">
     <h3>MY CHARGING HISTORY <i class="fas fa-book"></i></h3>
     <% unless @user.bookings.empty? %>
-      <% inactive_bookings.each do |booking| %>
+      <% @user.bookings.where("status = 1").each do |booking| %>
         <div class="tab-content-separator"></div>
         <p><%= booking.created_at.strftime('%A, %d %b') %></p>
         <p><%= booking.created_at.strftime('%l:%M %p') %> - <%=  (booking.created_at + booking.duration.seconds).strftime('%l:%M %p') %></p>

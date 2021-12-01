@@ -9,17 +9,22 @@
   <%# <% end %>
 
   <% if @user.plugs.last %>
-    <div class="chargercard">
-      <%= link_to edit_plug_path(@user.plugs[0]) do %>
-        <h3>Your <span style="font-weight:600">TYPE <%= @user.plugs[0].plug_type %></span> Charger at <span style="font-weight:600"><%= @user.plugs[0].location.upcase %></span></h3>
-      <% end %>
-      <% @user.plugs[1..-1].each do |plug| %>
-        <div class="tab-content-separator"></div>
-          <%= link_to edit_plug_path(plug) do %>
+    <%= link_to edit_plug_path(@user.plugs[0]) do %>
+      <div class="chargercard">
+        <div class="header-div">
+          <h3>Your <span style="font-weight:600">TYPE <%= @user.plugs[0].plug_type %></span> Charger at <span style="font-weight:600"><%= @user.plugs[0].location.upcase %></span></h3>
+        </div>
+      </div>
+    <% end %>
+    <% @user.plugs[1..-1].each do |plug| %>
+      <%= link_to edit_plug_path(plug) do %>
+        <div class="chargercard">
+          <div class="header-div">
             <h3>Your <span style="font-weight:600">TYPE <%= plug.plug_type %></span> Charger at <span style="font-weight:600"><%= plug.location.upcase %></span></h3>
-          <% end %>
+          </div>
+        </div>
       <% end %>
-    </div>
+    <% end %>
     <p style="font-size:13px;text-align:center;color:rgb(114, 114, 114)">Click one, to see details and press + to add a new one!</p>
   <% else %>
     <div class="chargercard">
@@ -28,7 +33,7 @@
   <% end %>
 
   <%= link_to plugs_new_path do %>
-    <div class="back-button" style="transition:2s">+</div>
+    <div class="back-button">+</div>
   <% end %>
 </div>
 
