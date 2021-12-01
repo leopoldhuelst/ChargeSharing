@@ -51,19 +51,20 @@ puts 'Generating new Data...'
 end
 
 # to prevent that one booking has same user
-until @index != @index2 do
-  @index = rand(-8..7)
-  @index2 = rand(-8..7)
+loop do
+  p @index2 = rand(-8..7)
+  p @index = rand(-8..7)
+  break if @index2 != @index
 end
 
 # first 8 are good, second 8 are bad
 @reviews = ["This Car Charger works very well. It persistently improves my flirting skills by a lot.", "Handsome young lad. Went for a date while his car was charged <3",  "this Car Charger is light-hearted.", "Handsome dude. was talking to the charger but whatever. liked him", "Great charger! My velociraptor looves to play with it :)", "he was totally on drugs but I had a lot of fun watching him so...", "This Car Charger, does exactly what it's suppose to do.", "This man did exactly what he was supposed to do",
-            "I tried to touch it but got cheeseburger all over it.", "I get bad review... I send bad review", "it only works when i pet it !", "touched my charger all over again... had to call the cops this time smh", "Charger is suspicious. After I use it, my car only drives backwards", "When he arrived he hit my letter box so I hacked his car to drive backwards lmaooo", "tried to charge my phone and now its broken. please repair ASAp dude", "This is a CAR charger. stop trying to charger your PHONE man. STOP IT!",]
+            "Owner said password was 'Chickendick334', but charger only had numbers!??", "I get bad review... I send bad review", "it only works when i pet it !", "touched my charger all over again... had to call the cops this time smh", "Charger is suspicious. After I use it, my car only drives backwards", "When he arrived he hit my letter box so I hacked his car to drive backwards lmaooo", "tried to charge my phone and now its broken. please repair ASAp dude", "This is a CAR charger. stop trying to charger your PHONE man. STOP IT!",]
 # index for reviews because we need 16 (one for user and provider per booking)
 @index_r = 0
 
-
 8.times do
+
   booking = Booking.create!(
     user: @users[@index],
     # status 0 means the booking is current and not over yet; status 1 means its over
@@ -72,6 +73,7 @@ end
     plug: @plugs[@index2],
     cost: rand(2..25)
   )
+
   @index += 1
   @index = 0 if @index == 8
   @index2 += 1
@@ -84,7 +86,7 @@ end
     if @index_r < 9
       rating = [4, 5].sample
     else
-      rating = [1, 2, 3].sample
+      rating = [1, 2].sample
     end
     Review.create!(
       rating: rating,
@@ -93,6 +95,7 @@ end
       booking: booking
     )
     @index_r += 1
+
   end
 
 end

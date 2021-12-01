@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_29_133112) do
+ActiveRecord::Schema.define(version: 2021_12_01_111723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2021_11_29_133112) do
     t.integer "plug_type"
     t.string "location"
     t.text "description"
-    t.integer "fixed_cost_per_15_min"
+    t.float "fixed_cost_per_15_min"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
