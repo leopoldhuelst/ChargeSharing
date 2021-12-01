@@ -31,12 +31,20 @@ class BookingsController < ApplicationController
     else
       render :new
     end
-
   end
 
   def approve
-    @plug = Plug.find(params[:id])
+    @plug = Plug.find(params[:plug_id])
     authorize @plug
+  end
+
+  def save_payment
+    customer = Stripe::Customer.create(payment_method: params[:id])
+    current_user.customer_id = customer.id
+    current_user.save
+    plug = Plug.find(params[:plug_id])
+
+    create
   end
 
   def stop_booking
@@ -52,7 +60,24 @@ class BookingsController < ApplicationController
     @booking.save
     @plug.availability = 0
     @plug.save
-
+    payment = Stripe::PaymentMethod.list(customer: current_user.customer_id, type: 'card')
+    payment_id = payment.data.first.id
+    begin
+      intent = Stripe::PaymentIntent.create({
+        amount: (@booking.cost * 100).to_i,
+        currency: 'usd',
+        customer: current_user.customer_id,
+        payment_method: payment_id,
+        error_on_requires_action: true,
+        confirm: true
+      })
+    rescue Stripe::CardError => e
+      puts "Error is: #{e.error.code}"
+      payment_intent_id = e.error.payment_intent.id
+      payment_intent = Stripe::PaymentIntent.retrieve(payment_intent_id)
+      puts payment_intent.id
+      raise
+    end
 
     redirect_to review_booking_new_path(@booking)
   end
