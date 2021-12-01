@@ -5,14 +5,32 @@
   // background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1)) !important;
   box-shadow: 5px 5px 15px !important;
   position: relative;
-  left: 66px;
+  left: 27px;
   top: 5rem;
-
+  padding: 15px 10px 15px !important;
   //margin: 2rem;
   //width: 100%;
   //display: flex;
 }
 
+.info-window-text   {
+  padding: 8px;
+  padding-top: 10px;
+}
+
+.mapboxgl-ctrl-geolocate {
+  background-image: url("crosshairgood.png") !important;
+  border-radius: 50px;
+}
+
+.mapboxgl-ctrl-icon {
+  background-image: url("crosshairgood.png") !important;
+  background-size: contain !important;
+}
+
+.mapboxgl-ctrl-bottom-right {
+  display: none;
+}
 
 .mapboxgl-popup-tip {
   display: none;
@@ -30,6 +48,22 @@
   top: 15%;
   left: 10px;
 }
+
+
+.coolpopup .mapboxgl-popup.mapboxgl-popup-anchor-bottom,
+.coolpopup .mapboxgl-popup.mapboxgl-popup-anchor-top,
+.coolpopup .mapboxgl-popup.mapboxgl-popup-anchor-center,
+.coolpopup .mapboxgl-popup.mapboxgl-popup-anchor-right,
+.coolpopup .mapboxgl-popup.mapboxgl-popup-anchor-left,
+.coolpopup .mapboxgl-popup.mapboxgl-popup-anchor-bottom-right,
+.coolpopup .mapboxgl-popup.mapboxgl-popup-anchor-bottom-left,
+.coolpopup .mapboxgl-popup.mapboxgl-popup-anchor-top-right,
+.coolpopup .mapboxgl-popup.mapboxgl-popup-anchor-top-left {
+  max-width: 305px !important;
+}
+
+
+
 .mapboxgl-popup-anchor-top .mapboxgl-popup-tip,
 .mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip,
 .mapboxgl-popup-anchor-center .mapboxgl-popup-tip,
@@ -40,6 +74,7 @@
 .mapboxgl-popup-anchor-top-right .mapboxgl-popup-tip,
 .mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip {
   display: none !important;
+  max-width: 305px !important;
 }
 
 // .mapboxgl-popup.mapboxgl-popup-anchor-bottom {
