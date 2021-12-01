@@ -2,12 +2,12 @@
   <div class="info-window-text">
     <p>LOCATION: <%= plug.location %></p>
     <p>PLUG TYPE: <%= plug.plug_type %></p>
-    <p>COST: $<%= plug.fixed_cost_per_15_min %> per hour</p>
+    <p>COST: $<%= plug.fixed_cost_per_15_min %> per 15 mins</p>
     <p>DESCRIPTION: <%= plug.description %></p>
+    <% if plug.availability == 0 %>
+      <button class="info-window-button"><%= link_to "CHARGE NOW", bookings_approve_path(plug) %></button>
+    <% else %>
+      <h3>**CURRENTLY UNAVAILABLE**</h3>
+    <% end %>
   </div>
-  <% if plug.availability == 0 %>
-    <button class="info-window-button"><%= link_to "CHARGE NOW", bookings_approve_path(plug) %></button>
-  <% else %>
-    <p>**This charger is currently unavailable**</p>
-  <% end %>
 </div>

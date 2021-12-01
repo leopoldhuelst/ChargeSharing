@@ -3,9 +3,9 @@
     <div id="avatar_name">
       <div>
         <h2>
-          <%= @user.first_name %>
+          <%= @user.first_name.upcase %>
           <br>
-          <%= @user.last_name %>
+          <%= @user.last_name.upcase %>
         </h2>
       </div>
       <i class="fas fa-user-circle fa-4x"></i>
@@ -127,7 +127,7 @@
 
 <div id="tab-2-content">
   <div class="tab-card">
-    <h3>Written Reviews <i class="fas fa-paper-plane"></i></h3>
+    <h3>REVIEWS GIVEN <i class="fas fa-paper-plane"></i></h3>
       <% if @user.reviews.last %>
         <% @user.reviews.each do |review| %>
           <div class="tab-content-separator"></div>
@@ -151,7 +151,7 @@
       <% end %>
   </div>
   <div class="tab-card">
-    <h3>Received Reviews <i class="fas fa-mail-bulk"></i></h3>
+    <h3>REVIEWS RECEIVED <i class="fas fa-mail-bulk"></i></h3>
     <% if @user.reviews_as_owner.last %>
       <% @user.reviews_as_owner.each do |review| %>
         <div class="tab-content-separator"></div>
@@ -182,7 +182,7 @@
 
 <div id="tab-3-content"  class="select">
   <div class="tab-card">
-    <h3>Booking History <i class="fas fa-book"></i></h3>
+    <h3>MY CHARGING HISTORY <i class="fas fa-book"></i></h3>
     <% unless @user.bookings.empty? %>
       <% inactive_bookings.each do |booking| %>
         <div class="tab-content-separator"></div>
@@ -192,15 +192,15 @@
       <% end %>
     <% else %>
       <div class="tab-content-separator"></div>
-      <p>No booking history yet</p>
+      <p>No booking history yet!</p>
       <p><%= link_to 'Go to map', root_path, style: "z-index:99999" %></p>
     <% end %>
   </div>
   <div class="tab-card">
-    <h3 class="mb-4">Plug Booking History <i class="fas fa-charging-station"></i></h3>
+    <h3 class="mb-4">MY PLUG BOOKINGS <i class="fas fa-charging-station"></i></h3>
     <% if @user.plugs.last %>
       <% @user.plugs.each do |plug| %>
-        <p>Your plug at <%= plug.location %></p>
+        <p>YOUR PLUG: <%= plug.location %></p>
         <% if plug.bookings.last %>
           <% plug.bookings.each do |booking| %>
             <div class="tab-content-separator"></div>
