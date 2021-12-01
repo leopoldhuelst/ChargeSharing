@@ -57,7 +57,7 @@ export default class extends Controller {
       })
     } else {
     this.markersValue.forEach((marker) => {
-      const popup = new mapboxgl.Popup().setHTML(marker.info_window);
+      const popup = new mapboxgl.Popup({className:'coolpopup', maxWidth: '305px'}).setHTML(marker.info_window);
       const customMarker = document.createElement('div');
       if (marker.availability === 0) {
         customMarker.className = 'active_marker';
