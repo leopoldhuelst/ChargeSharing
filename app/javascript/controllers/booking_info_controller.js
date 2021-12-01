@@ -1,6 +1,6 @@
 import { Controller } from "stimulus"
 export default class extends Controller {
-  static targets = ["cost", "time"]
+  static targets = ["cost", "time", "realbutton", "fakebutton"]
   static values = {
     costPerMin: Number,
     seconds: Number,
@@ -8,6 +8,9 @@ export default class extends Controller {
   }
 
   connect() {
+    console.log(this.secondsValue)
+    console.log(this.realbuttonTarget)
+    console.log(this.fakebuttonTarget)
     this.timer = setInterval(() => {
       this.setTimeAndCost()
     }, 1000)
@@ -18,6 +21,12 @@ export default class extends Controller {
     this.costValue = this.secondsValue * (this.costPerMinValue / 900)
     this.timeTarget.innerText = this.formatTime(this.secondsValue)
     this.costTarget.innerText = `$${String(this.costValue.toFixed(2))}`
+    if (this.costValue < 0.50) {
+      this.fakebuttonTarget.innerText = `${50 - (this.costValue * 100).toFixed(0)} cents left until you can stop booking`
+    } else {
+      this.fakebuttonTarget.classList.add("d-none")
+      this.realbuttonTarget.classList.remove("d-none")
+    }
   }
 
   formatTime(seconds) {
