@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2021_12_01_111723) do
     t.integer "plug_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "customer_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

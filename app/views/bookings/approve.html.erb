@@ -4,34 +4,65 @@
 
 <div class="input-field">
   <form action="#">
-  <label for="card-owner">Card owner</label>
-  <%# <input type="card-owner" placeholder="Angelo Merte"> %>
-  <input class="form-control" autofocus="autofocus" value="">
-  <br>
-  <label for="">Card number</label>
-  <input class="form-control" autofocus="autofocus" value="">
-  <br>
-  <div class="mb-5" style="display: flex">
-    <div style="margin-right: 5px">
-      <label for="">Exp. date</label>
-      <input class="form-control" autofocus="autofocus" value="">
-    </div>
+    <label for="card-owner">Card owner</label>
+    <input class="form-control" id="cardholder-name" autofocus="autofocus" type="text">
     <br>
-    <div style="margin-left: 5px">
-      <label for="">Security code</label>
-      <input class="form-control" autofocus="autofocus" value="">
-    </div>
-  </div>
+    <label for="card-info">Card details</label>
+    <div class="form-control" id="card-element"></div>
+    <%# <div id="card-number"></div>
+    <div id="card-expiry"></div>
+    <div id="card-cvc"></div> %>
+    <br>
+    <div id="card-result"></div>
   </form>
-    <div class="tab-content-separator"></div>
-    <div class="submit-buttons">
-      <%= link_to "Book Now", plug_bookings_path(@plug), method: :post, style: 'color: black' %>
-    </div>
-    <div class="tab-content-separator"> </div>
+  <div class="tab-content-separator"></div>
+  <div class="submit-buttons">
+    <button class="btn btn-default" id="card-button">Save Card</button>
+  </div>
+  <div class="tab-content-separator"> </div>
     <div class="submit-buttons">
       <%= link_to "Cancel", plugs_path %>
     </div>
-
-
   </div>
 </div>
+<div id="stripe-key" class="d-none"><%=ENV['STRIPE_PUBLISHABLE_KEY']%></div>
+<div id="plug-id" class="d-none"><%=@plug.id%></div>
+
+
+<script>
+// const stripeKey = document.getElementById("stripe-key")
+// const stripe = Stripe(stripeKey)
+// const elements = stripe.elements()
+// const cardElement = elements.create('card');
+// cardElement.mount('#card-element');
+
+// const cardNumber = elements.create('cardNumber');
+// cardNumber.mount('#card-number')
+// const cardExpiry = elements.create('cardExpiry');
+// cardExpiry.mount('#card-expiry')
+// const cardCvc = elements.create('cardCvc');
+// cardCvc.mount('#card-cvc')
+
+// const cardholderName = document.getElementById('cardholder-name');
+// const cardButton = document.getElementById('card-button');
+// const resultContainer = document.getElementById('card-result');
+
+// cardButton.addEventListener('click', function(ev) {
+//   console.log(cardElement)
+//   stripe.createPaymentMethod({
+//       type: 'card',
+//       card: cardElement,
+//       billing_details: {
+//         name: cardholderName.value,
+//       },
+//     }
+//   ).then(function(result) {
+//     if (result.error) {
+//       resultContainer.textContent = result.error.message;
+//     } else {
+//       // resultContainer.textContent = "Created payment method: " + result.paymentMethod.id;
+//       location.assign(`http://${window.location.host}/create_payment_id/${<%= @plug.id %>}/${result.paymentMethod.id}`)
+//     }
+//   });
+// });
+</script>
