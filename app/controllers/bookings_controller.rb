@@ -34,14 +34,8 @@ class BookingsController < ApplicationController
   end
 
   def approve
-    if current_user.customer_id.nil?
-      @plug = Plug.find(params[:plug_id])
-      authorize @plug
-    else
-      @plug = Plug.find(params[:plug_id])
-      authorize @plug
-      create
-    end
+    @plug = Plug.find(params[:plug_id])
+    authorize @plug
   end
 
   def save_payment
