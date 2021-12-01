@@ -26,9 +26,13 @@ require("channels")
 import "bootstrap";
 
 // Internal imports, e.g:
+import { stripeInit } from './stripe_init'
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
+  if(document.getElementById("plug-id")) {
+    stripeInit()
+  }
   // Call your functions here, e.g:
   // initSelect2();
 });

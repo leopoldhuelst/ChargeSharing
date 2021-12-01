@@ -78,7 +78,6 @@ class BookingsController < ApplicationController
       puts payment_intent.id
       raise
     end
-
     redirect_to review_booking_new_path(@booking)
   end
 end
