@@ -79,7 +79,7 @@ end
   @index2 += 1
   @index2 = 0 if @index2 == 8
 
-  # reviewtype 1 is for user by owner, review type 0 is for owner by user
+  # reviewtype 1 is a review for user by owner, review type 0 is a review for owner by user
   [0, 1].each do |number|
 
     # again... first 8 are good, second 8 are bad
