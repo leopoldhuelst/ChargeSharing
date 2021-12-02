@@ -24,4 +24,8 @@ class BookingPolicy < ApplicationPolicy
   def approve?
     true
   end
+
+  def add?
+    true
+  end
 end
