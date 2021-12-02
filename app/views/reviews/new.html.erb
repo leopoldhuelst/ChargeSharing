@@ -10,11 +10,12 @@
     <div class="tab-content-separator"></div>
     <h3>Cost </h3>
     <p><%= @review.booking.cost %>€</p>
-    <div id="favourite-button">
+    <div class="tab-content-separator"></div>
+    <div>
       <% if current_user.favorited?(@booking.plug) %>
-        <p>In favourites</p>
+        <p>Plug in favourites</p>
       <% else %>
-        <%= link_to "Add to favourites", add_favourites_path(@booking) %>
+        <%= link_to "Add to favourites", add_favourites_path(@booking), class:"favourite-button" %>
       <% end %>
     </div>
     <button id="review-button" data-new-review-target="tab">Write Review + <i class="far fa-keyboard"></i></button>
