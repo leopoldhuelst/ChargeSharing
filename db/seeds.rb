@@ -42,7 +42,7 @@ puts 'Generating new Data...'
     # availability 0 means available, 1 means it is booked
     availability: [0, 1].sample,
     description: @descriptions[@index],
-    fixed_cost_per_15_min: rand(2...10).round(2),
+    fixed_cost_per_15_min: rand(2.0...10.0).round(2),
     user: user
   )
 

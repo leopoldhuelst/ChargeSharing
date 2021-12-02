@@ -2,7 +2,7 @@
   <div class="info-window-text">
     <p>LOCATION: <%= plug.location %></p>
     <p>PLUG TYPE: <%= plug.plug_type %></p>
-    <p>COST: <%= plug.fixed_cost_per_15_min %>€ per 15 mins</p>
+    <p>COST: <%= plug.fixed_cost_per_15_min.round(2) %>€ per 15 mins</p>
     <p>DESCRIPTION: <%= plug.description %></p>
     <% if plug.availability == 0 %>
       <button class="info-window-button"><%= link_to "CHARGE NOW", bookings_approve_path(plug) %></button>
