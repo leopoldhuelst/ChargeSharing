@@ -1,0 +1,18 @@
+<div id="logo-payment">
+  <h2>Favourites</h2>
+</div>
+
+<div class="tab-card-favorite">
+  <% @user_favourites.each do |favourite| %>
+    <% plug = Plug.find(favourite.favoritable_id) %>
+    <p><%= plug.location %></p>
+    <p>PLUG TYPE: <%= plug.plug_type %></p>
+    <p>COST: <%= plug.fixed_cost_per_15_min.round(2) %>€ per 15 mins</p>
+    <p>DESCRIPTION: <%= plug.description %></p>
+     <% if plug.availability == 0 %>
+      <button class="info-window-button"><%= link_to "CHARGE NOW", bookings_approve_path(plug) %></button>
+    <% else %>
+      <h3>**CURRENTLY UNAVAILABLE**</h3>
+    <% end %>
+  <% end %>
+</div>

@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   post 'bookings/:id/reviews', to: 'reviews#create', as: 'booking_reviews'
   get 'bookings/:id/favourites', to: 'favourites#add', as: 'add_favourites'
   get 'create_payment_id/:plug_id/:id', to: 'bookings#save_payment'
+  get 'bookings/favourite', to: 'favourites#index', as: 'all_favourites'
 end
