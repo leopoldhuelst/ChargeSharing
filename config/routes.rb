@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   end
   get 'bookings/:id/reviews/new', to: 'reviews#new', as: 'review_booking_new'
   post 'bookings/:id/reviews', to: 'reviews#create', as: 'booking_reviews'
+  get 'bookings/:id/favourites', to: 'favourites#add', as: 'add_favourites'
   get 'create_payment_id/:plug_id/:id', to: 'bookings#save_payment'
 end

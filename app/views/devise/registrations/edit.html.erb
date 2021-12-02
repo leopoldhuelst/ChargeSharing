@@ -160,8 +160,7 @@
         <% @recieved_as_user << booking.reviews.where('review_type = 1').first %>
       <% end %>
       <% @recieved_as_user.each do |review| %>
-        <div class="tab-content-separator"></div>
-        <%# the providers review  %>
+      <div class="tab-content-separator"></div>
         <p>You were booking <strong><%= review.booking.plug.user.first_name %> <%= review.booking.plug.user.last_name %></strong>'s charger</p>
         <%# the stars  %>
         <% num = review.rating %>

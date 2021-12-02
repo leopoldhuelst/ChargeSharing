@@ -7,6 +7,7 @@ export default class extends Controller {
     apiKey: String,
     markers: Array
   }
+  static targets = ["selected"]
 
   connect() {
     mapboxgl.accessToken = this.apiKeyValue;
@@ -47,6 +48,8 @@ export default class extends Controller {
       this.markersValue.forEach((marker) => {
         const customMarker = document.createElement('div');
         customMarker.className = 'active_marker';
+        customMarker.dataset.mapboxTarget = 'selected';
+        customMarker.dataset.action = 'click->mapbox#changeImage';
         customMarker.style.backgroundImage = `url('${marker.active_image_url}')`;
         customMarker.style.backgroundSize = 'cover';
         customMarker.style.width = '27px';
@@ -61,6 +64,8 @@ export default class extends Controller {
       const customMarker = document.createElement('div');
       if (marker.availability === 0) {
         customMarker.className = 'active_marker';
+        customMarker.dataset.action = 'click->mapbox#changeImage';
+        customMarker.dataset.mapboxTarget = 'selected';
         customMarker.style.backgroundImage = `url('${marker.active_image_url}')`;
         customMarker.style.backgroundSize = 'cover';
         customMarker.style.width = '27px';
@@ -68,6 +73,8 @@ export default class extends Controller {
       } else {
         customMarker.className = 'inactive_marker';
         customMarker.style.backgroundImage = `url('${marker.inactive_image_url}')`;
+        customMarker.dataset.action = 'click->mapbox#changeImage';
+        customMarker.dataset.mapboxTarget = 'selected';
         customMarker.style.backgroundSize = 'cover';
         customMarker.style.width = '27px';
         customMarker.style.height = '35px';
@@ -88,4 +95,10 @@ export default class extends Controller {
     this.markersValue.forEach(marker => bounds.extend([marker.lng, marker.lat]));
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 });
   };
+  changeImage() {
+    this.selectedTargets.forEach((marker) => {
+      marker.classList.remove('selected')
+    })
+    event.target.classList.add('selected')
+  }
 };

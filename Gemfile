@@ -35,6 +35,7 @@ gem 'devise'
 gem 'pundit'
 gem 'stripe'
 gem 'rack-cors'
+gem 'acts_as_favoritor'
 
 group :development, :test do
   gem 'pry-byebug'
