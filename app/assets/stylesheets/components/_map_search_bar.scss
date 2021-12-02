@@ -22,6 +22,10 @@
   left: 33px;
 }
 
+.mapboxgl-ctrl.mapboxgl-ctrl-group.move-up {
+  top: calc(100vh - 320px);
+}
+
 .mapboxgl-canvas {
   width: 100vw !important;
 }

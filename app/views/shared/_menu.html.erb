@@ -33,12 +33,21 @@
   </div>
 
   <div>
-    <div class="container" data-action="click->menu-slider#toggleMenu"
-         data-menu-slider-target="button">
-      <div class="bar1"></div>
-      <div class="bar2"></div>
-      <div class="bar3"></div>
-    </div>
+    <% if current_page?("/plugs/#{params[:plug_id]}/bookings/#{params[:id]}") %>
+      <div class="menu-button-container move-up" data-action="click->menu-slider#toggleMenu"
+          data-menu-slider-target="button">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </div>
+    <% else %>
+      <div class="menu-button-container" data-action="click->menu-slider#toggleMenu"
+          data-menu-slider-target="button">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </div>
+    <% end %>
   </div>
 
   <%# <div id="menu-content" data-menu-slider-target="menuContent">

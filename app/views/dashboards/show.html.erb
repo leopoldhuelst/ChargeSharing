@@ -3,20 +3,13 @@
   <%# <% else %>
     <div class="logo charger">
       <h3><%= @user.first_name %> <%= @user.last_name %>'s</h3>
-      <h2 style="margin-top:5px">CHARGE SHARING</h2>
+      <h2 style="margin-top:5px">CHARGERPAGE</h2>
       <%# <div style="display:flex;justify-content:space-between;margin-top:5px;padding:0px 4px"><h2>C</h2><h2>H</h2><h2>A</h2><h2>R</h2><h2>G</h2><h2>E</h2><h2>R</h2><div style="width:10px"></div><h2>P</h2><h2>A</h2><h2>G</h2><h2>E</h2></div> %>
     </div>
   <%# <% end %>
 
-  <% if @user.plugs.last %>
-    <%= link_to edit_plug_path(@user.plugs[0]) do %>
-      <div class="chargercard">
-        <div class="header-div">
-          <h3>Your <span style="font-weight:600">TYPE <%= @user.plugs[0].plug_type %></span> Charger at <span style="font-weight:600"><%= @user.plugs[0].location.upcase %></span></h3>
-        </div>
-      </div>
-    <% end %>
-    <% @user.plugs[1..-1].each do |plug| %>
+ <% if @user.plugs.last %>
+    <% @user.plugs.each do |plug| %>
       <%= link_to edit_plug_path(plug) do %>
         <div class="chargercard">
           <div class="header-div">
@@ -33,7 +26,7 @@
   <% end %>
 
   <%= link_to plugs_new_path do %>
-    <div class="back-button">+</div>
+    <div class="back-button" style="transition:2s">+</div>
   <% end %>
 </div>
 
