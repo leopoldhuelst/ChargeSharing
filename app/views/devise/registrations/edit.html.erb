@@ -124,120 +124,26 @@
 </div>
 
 <%# Reviewstab HTML %>
+<% @recieved_as_owner = [] %>
+<% @recieved_as_user = [] %>
+<% @written_as_user = [] %>
+<% @written_as_owner = [] %>
 
 <div id="tab-2-content">
-<<<<<<< HEAD
-  <% if @user.bookings.last %>
-
-    <% @user.bookings.each do |booking| %>
-      <div class="tab-card">
-
-
-
-
-        <h3>You were booking <%= booking.plug.user.first_name %> <%= booking.plug.user.last_name %>'s Plug</h3>
-        <div class="tab-content-separator"></div>
-
-        <%# users review  %>
-        <p><strong>Your</strong> Rating</p>
-
-        <%# the stars %>
-        <% num = booking.reviews.where("review_type = 0").first.rating %>
-        <p>
-          <% num.times do %>
-            <i class="fas fa-star small "></i>
-          <% end %>
-          <% (5-num).times do %>
-            <i class="far fa-star small "></i>
-          <% end %>
-        </p>
-
-        <%# the content  %>
-        <p>"<%= booking.reviews.where("review_type = 0").first.contents %>"</p>
-=======
-  <div class="tab-card">
-    <h3>REVIEWS GIVEN <i class="fas fa-paper-plane"></i></h3>
-      <% if @user.reviews.last %>
-        <% @user.reviews.each do |review| %>
-          <div class="tab-content-separator"></div>
-          <% num = review.rating.to_i %>
-          <p>
-            <% num.times do %>
-              <i class="fas fa-star small "></i>
-            <% end %>
-            <% (5-num).times do %>
-              <i class="far fa-star small "></i>
-            <% end %>
-          </p>
-          <p>"<%= review.contents %>"</p>
-          <%# <p>by <%= review.booking.plug.user.first_name %> <%#= review.booking.plug.user.last_name %></p>
-          <p><%= review.booking.created_at.strftime('%A, %d %b') %></p>
-        <% end %>
-      <% else %>
-        <div class="tab-content-separator"></div>
-        <p>No reviews yet</p>
-        <p><%= link_to 'Go to map', root_path, style: "z-index:99999" %></p>
+  <% if @user.reviews.last %>
+    <div class="tab-card">
+      <%# all the reviews the user has gotten %>
+      <h3>REVIEWS RECEIVED <i class="fas fa-mail-bulk"></i></h3>
+      <%# all the rewies the user has gotten as provider %>
+      <% @user.bookings_as_owner.each do |booking| %>
+        <% @recieved_as_owner << booking.reviews.where('review_type = 0').first %>
       <% end %>
-  </div>
-  <div class="tab-card">
-    <h3>REVIEWS RECEIVED <i class="fas fa-mail-bulk"></i></h3>
-    <% if @user.reviews_as_owner.last %>
-      <% @user.reviews_as_owner.each do |review| %>
->>>>>>> master
+      <% @recieved_as_owner.each do |review| %>
         <div class="tab-content-separator"></div>
-
-        <%# the providers review  %>
-        <p><strong><%= booking.plug.user.first_name %> <%= booking.plug.user.last_name %></strong>'s Rating</p>
-
-        <%# the stars  %>
-        <% num = booking.reviews.where("review_type = 0").first.rating %>
-        <p>
-          <% num.times do %>
-            <i class="fas fa-star small "></i>
-          <% end %>
-          <% (5-num).times do %>
-            <i class="far fa-star small "></i>
-          <% end %>
-        </p>
-
-        <%# the content  %>
-        <p>"<%= booking.reviews.where("review_type = 1").first.contents %>"</p>
-
-
-
-      </div>
-    <% end %>
-
-    <% @user.bookings_as_owner.each do |booking|  %>
-      <div class="tab-card">
-
-
-        <h3><%= booking.user.first_name %> <%= booking.user.last_name %> was booking Your Plug</h3>
-        <div class="tab-content-separator"></div>
-
-        <%# users review (as provider) %>
-        <p><strong>Your</strong> Rating</p>
-
-        <%# the stars %>
-        <% num = booking.reviews.where("review_type = 0").first.rating %>
-        <p>
-          <% num.times do %>
-            <i class="fas fa-star small "></i>
-          <% end %>
-          <% (5-num).times do %>
-            <i class="far fa-star small "></i>
-          <% end %>
-        </p>
-
-        <%# the content  %>
-        <p>"<%= booking.reviews.where("review_type = 1").first.contents %>"</p>
-        <div class="tab-content-separator"></div>
-
         <%# the users review  %>
-        <p><strong><%= booking.user.first_name %> <%= booking.user.last_name %></strong>'s Rating</p>
-
+        <p>When <strong><%= review.booking.user.first_name %> <%= review.booking.user.last_name %></strong> booked your charger</p>
         <%# the stars  %>
-        <% num = booking.reviews.where("review_type = 0").first.rating %>
+        <% num = review.rating %>
         <p>
           <% num.times do %>
             <i class="fas fa-star small "></i>
@@ -246,14 +152,78 @@
             <i class="far fa-star small "></i>
           <% end %>
         </p>
-
         <%# the content  %>
-        <p>"<%= booking.reviews.where("review_type = 0").first.contents %>"</p>
+        <p>"<%= review.contents %>"</p>
+      <% end %>
+      <%# all the rewies the user has gotten as user %>
+      <% @user.bookings.each do |booking| %>
+        <% @recieved_as_user << booking.reviews.where('review_type = 1').first %>
+      <% end %>
+      <% @recieved_as_user.each do |review| %>
+        <div class="tab-content-separator"></div>
+        <%# the providers review  %>
+        <p>You were booking <strong><%= review.booking.plug.user.first_name %> <%= review.booking.plug.user.last_name %></strong>'s charger</p>
+        <%# the stars  %>
+        <% num = review.rating %>
+        <p>
+          <% num.times do %>
+            <i class="fas fa-star small "></i>
+          <% end %>
+          <% (5-num).times do %>
+            <i class="far fa-star small "></i>
+          <% end %>
+        </p>
+        <%# the content  %>
+        <p>"<%= review.contents %>"</p>
+      <% end %>
+    </div>
 
-      </div>
-    <% end %>
+    <%# all the reviews the user has written %>
+    <div class="tab-card">
+      <h3>REVIEWS GIVEN <i class="fas fa-paper-plane"></i></h3>
 
-
+      <%# all the rewies the user has written as user %>
+      <% @user.bookings.each do |booking| %>
+        <% @written_as_user << booking.reviews.where('review_type = 0').first %>
+      <% end %>
+      <% @written_as_user.each do |review|  %>
+        <div class="tab-content-separator"></div>
+        <p>You were booking <strong><%= review.booking.plug.user.first_name %> <%= review.booking.plug.user.last_name %></strong>'s charger</p>
+        <%# the stars  %>
+        <% num = review.rating %>
+        <p>
+          <% num.times do %>
+            <i class="fas fa-star small "></i>
+          <% end %>
+          <% (5-num).times do %>
+            <i class="far fa-star small "></i>
+          <% end %>
+        </p>
+        <%# the content  %>
+        <p>"<%= review.contents %>"</p>
+      <% end %>
+      <%# all the rewies the user has written as provider %>
+      <% @user.bookings_as_owner.each do |booking| %>
+        <% @written_as_owner << booking.reviews.where('review_type = 0').first %>
+      <% end %>
+      <% @written_as_owner.each do |review| %>
+        <div class="tab-content-separator"></div>
+        <%# the users review  %>
+        <p>When <strong><%= review.booking.user.first_name %> <%= review.booking.user.last_name %></strong> booked your charger</p>
+        <%# the stars  %>
+        <% num = review.rating %>
+        <p>
+          <% num.times do %>
+            <i class="fas fa-star small "></i>
+          <% end %>
+          <% (5-num).times do %>
+            <i class="far fa-star small "></i>
+          <% end %>
+        </p>
+        <%# the content  %>
+        <p>"<%= review.contents %>"</p>
+      <% end %>
+    </div>
   <% else %>
     <div class="tab-card">
       <div class="tab-content-separator"></div>
@@ -262,8 +232,6 @@
     </div>
   <% end %>
 </div>
-
-
 
 
 <%# Bookings-tab HTML %>
@@ -289,7 +257,7 @@
     <h3 class="mb-4">MY PLUG BOOKINGS <i class="fas fa-charging-station"></i></h3>
     <% if @user.plugs.last %>
       <% @user.plugs.each do |plug| %>
-        <p>YOUR PLUG: <%= plug.location %></p>
+        <p><%= plug.location.upcase %></p>
         <% if plug.bookings.last %>
           <% plug.bookings.each do |booking| %>
             <div class="tab-content-separator"></div>
