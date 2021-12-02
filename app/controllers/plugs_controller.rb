@@ -12,6 +12,7 @@ class PlugsController < ApplicationController
         info_window: render_to_string(partial: "info_window", locals: { plug: plug }),
         active_image_url: helpers.asset_url('bolt4.png'),
         inactive_image_url: helpers.asset_url('bolt3.png'),
+        selected_image_url: helpers.asset_url('bolt6.png'),
         availability: plug.availability
       }
     end
