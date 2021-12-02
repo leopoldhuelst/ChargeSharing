@@ -18,7 +18,6 @@
           <% end %>
         <% end %>
         <br>
-        <%= current_page?("/plugs/#{params[:plug_id]}/bookings/#{params[:id]}") %>
         <%= link_to 'SIGN OUT', destroy_user_session_path, method: :delete, data: { confirm: "Are you sure?" }, class: "submit-button" %>
       </div>
       <div class="content-separator"></div>
