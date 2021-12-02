@@ -2,8 +2,8 @@
   border-radius: 8px;
   padding-left: 30px;
   padding-right: 30px;
-  padding-bottom: 30px;
-  padding-top: 40px;
+  padding-bottom: 17px;
+  padding-top: 30px;
   margin-bottom: 30px;
   margin-left: 30px;
   margin-right: 0px;
@@ -21,6 +21,7 @@
     font-family: 'Rajdhani', sans-serif;
     font-size: 19px;
     font-weight: 400;
+    margin-bottom: 0;
   }
   font-family: 'Rajdhani', sans-serif;
   font-size: 19px;
@@ -40,7 +41,7 @@
   border: red;
   padding-top: .2rem;
   padding-bottom: 2rem;
-  margin-top: 1rem;
+  margin-top: 0.6rem;
   ;
   border-color: $default-red;
   a {
@@ -51,7 +52,7 @@
 
 
 #add-review {
-  padding-top: 2rem;
+  padding-top: 1rem;
   width: 96%;
   margin-left: 6px;
 }
