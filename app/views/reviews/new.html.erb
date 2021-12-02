@@ -9,7 +9,7 @@
     <p id="duration-booking" data-new-review-target="duration">00:00:00</p>
     <div class="tab-content-separator"></div>
     <h3>Cost </h3>
-    <p>$<%= @review.booking.cost %></p>
+    <p><%= @review.booking.cost %>€</p>
     <button id="review-button" data-new-review-target="tab">Write Review + <i class="far fa-keyboard"></i></button>
     <div id="add-review" class="d-none" data-new-review-target="form">
       <%= simple_form_for [ @booking, @review ] do |f| %>

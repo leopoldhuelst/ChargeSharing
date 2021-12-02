@@ -8,7 +8,7 @@
   <%# page content  %>
   <h2>Your <span style="font-weight:600">TYPE <%= @plug.plug_type %></span> Charger at <span style="font-weight:600"><%= @plug.location.upcase %></span></h2>
   <div class="tab-content-separator"></div>
-  <h3 style="margin-top:30px"><span style="font-weight:600">COST:</span><br>$<%= @plug.fixed_cost_per_15_min %> per 15 min</h3>
+  <h3 style="margin-top:30px"><span style="font-weight:600">COST:</span><br><%= @plug.fixed_cost_per_15_min %>€ per 15 min</h3>
   <br>
   <h3><span style="font-weight:600">DESCRIPTION:</span><br><%= @plug.description %></h3>
   <br>
