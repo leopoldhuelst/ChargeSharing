@@ -12,7 +12,7 @@
     <p><%= @review.booking.cost %>€</p>
     <div id="favourite-button">
       <% if current_user.favorited?(@booking.plug) %>
-        <p>Already in favourites</p>
+        <p>In favourites</p>
       <% else %>
         <%= link_to "Add to favourites", add_favourites_path(@booking) %>
       <% end %>
