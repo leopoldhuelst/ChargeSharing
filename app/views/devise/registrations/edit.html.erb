@@ -136,44 +136,48 @@
       <h3>REVIEWS RECEIVED <i class="fas fa-mail-bulk"></i></h3>
       <%# all the rewies the user has gotten as provider %>
       <% @user.bookings_as_owner.each do |booking| %>
-        <% @recieved_as_owner << booking.reviews.where('review_type = 0').first %>
+        <% @recieved_as_owner << booking.reviews.where('review_type = 0').first if booking.reviews %>
       <% end %>
       <% @recieved_as_owner.each do |review| %>
-        <div class="tab-content-separator"></div>
-        <%# the users review  %>
-        <p>When <strong><%= review.booking.user.first_name %> <%= review.booking.user.last_name %></strong> booked your charger</p>
-        <%# the stars  %>
-        <% num = review.rating %>
-        <p>
-          <% num.times do %>
-            <i class="fas fa-star small "></i>
-          <% end %>
-          <% (5-num).times do %>
-            <i class="far fa-star small "></i>
-          <% end %>
-        </p>
-        <%# the content  %>
-        <p>"<%= review.contents %>"</p>
+        <% if review %>
+          <div class="tab-content-separator"></div>
+          <%# the users review  %>
+          <p>When <strong><%= review.booking.user.first_name %> <%= review.booking.user.last_name %></strong> booked your charger</p>
+          <%# the stars  %>
+          <% num = review.rating %>
+          <p>
+            <% num.times do %>
+              <i class="fas fa-star small "></i>
+            <% end %>
+            <% (5-num).times do %>
+              <i class="far fa-star small "></i>
+            <% end %>
+          </p>
+          <%# the content  %>
+          <p>"<%= review.contents %>"</p>
+        <% end %>
       <% end %>
       <%# all the rewies the user has gotten as user %>
       <% @user.bookings.each do |booking| %>
-        <% @recieved_as_user << booking.reviews.where('review_type = 1').first %>
+        <% @recieved_as_user << booking.reviews.where('review_type = 1').first if booking.reviews %>
       <% end %>
       <% @recieved_as_user.each do |review| %>
-      <div class="tab-content-separator"></div>
-        <p>You were booking <strong><%= review.booking.plug.user.first_name %> <%= review.booking.plug.user.last_name %></strong>'s charger</p>
-        <%# the stars  %>
-        <% num = review.rating %>
-        <p>
-          <% num.times do %>
-            <i class="fas fa-star small "></i>
-          <% end %>
-          <% (5-num).times do %>
-            <i class="far fa-star small "></i>
-          <% end %>
-        </p>
-        <%# the content  %>
-        <p>"<%= review.contents %>"</p>
+        <% if review %>
+          <div class="tab-content-separator"></div>
+          <p>You were booking <strong><%= review.booking.plug.user.first_name %> <%= review.booking.plug.user.last_name %></strong>'s charger</p>
+          <%# the stars  %>
+          <% num = review.rating %>
+          <p>
+            <% num.times do %>
+              <i class="fas fa-star small "></i>
+            <% end %>
+            <% (5-num).times do %>
+              <i class="far fa-star small "></i>
+            <% end %>
+          </p>
+          <%# the content  %>
+          <p>"<%= review.contents %>"</p>
+        <% end %>
       <% end %>
     </div>
 
@@ -183,44 +187,48 @@
 
       <%# all the rewies the user has written as user %>
       <% @user.bookings.each do |booking| %>
-        <% @written_as_user << booking.reviews.where('review_type = 0').first %>
+        <% @written_as_user << booking.reviews.where('review_type = 0').first if booking.reviews %>
       <% end %>
       <% @written_as_user.each do |review|  %>
-        <div class="tab-content-separator"></div>
-        <p>You were booking <strong><%= review.booking.plug.user.first_name %> <%= review.booking.plug.user.last_name %></strong>'s charger</p>
-        <%# the stars  %>
-        <% num = review.rating %>
-        <p>
-          <% num.times do %>
-            <i class="fas fa-star small "></i>
-          <% end %>
-          <% (5-num).times do %>
-            <i class="far fa-star small "></i>
-          <% end %>
-        </p>
-        <%# the content  %>
-        <p>"<%= review.contents %>"</p>
+        <% if review %>
+          <div class="tab-content-separator"></div>
+          <p>You were booking <strong><%= review.booking.plug.user.first_name %> <%= review.booking.plug.user.last_name %></strong>'s charger</p>
+          <%# the stars  %>
+          <% num = review.rating %>
+          <p>
+            <% num.times do %>
+              <i class="fas fa-star small "></i>
+            <% end %>
+            <% (5-num).times do %>
+              <i class="far fa-star small "></i>
+            <% end %>
+          </p>
+          <%# the content  %>
+          <p>"<%= review.contents %>"</p>
+        <% end %>
       <% end %>
       <%# all the rewies the user has written as provider %>
       <% @user.bookings_as_owner.each do |booking| %>
-        <% @written_as_owner << booking.reviews.where('review_type = 0').first %>
+        <% @written_as_owner << booking.reviews.where('review_type = 0').first if booking.reviews %>
       <% end %>
       <% @written_as_owner.each do |review| %>
-        <div class="tab-content-separator"></div>
-        <%# the users review  %>
-        <p>When <strong><%= review.booking.user.first_name %> <%= review.booking.user.last_name %></strong> booked your charger</p>
-        <%# the stars  %>
-        <% num = review.rating %>
-        <p>
-          <% num.times do %>
-            <i class="fas fa-star small "></i>
-          <% end %>
-          <% (5-num).times do %>
-            <i class="far fa-star small "></i>
-          <% end %>
-        </p>
-        <%# the content  %>
-        <p>"<%= review.contents %>"</p>
+        <% if review %>
+          <div class="tab-content-separator"></div>
+          <%# the users review  %>
+          <p>When <strong><%= review.booking.user.first_name %> <%= review.booking.user.last_name %></strong> booked your charger</p>
+          <%# the stars  %>
+          <% num = review.rating %>
+          <p>
+            <% num.times do %>
+              <i class="fas fa-star small "></i>
+            <% end %>
+            <% (5-num).times do %>
+              <i class="far fa-star small "></i>
+            <% end %>
+          </p>
+          <%# the content  %>
+          <p>"<%= review.contents %>"</p>
+        <% end %>
       <% end %>
     </div>
   <% else %>
