@@ -126,35 +126,6 @@
 <%# Reviewstab HTML %>
 
 <div id="tab-2-content">
-<<<<<<< HEAD
-  <% if @user.bookings.last %>
-
-    <% @user.bookings.each do |booking| %>
-      <div class="tab-card">
-
-
-
-
-        <h3>You were booking <%= booking.plug.user.first_name %> <%= booking.plug.user.last_name %>'s Plug</h3>
-        <div class="tab-content-separator"></div>
-
-        <%# users review  %>
-        <p><strong>Your</strong> Rating</p>
-
-        <%# the stars %>
-        <% num = booking.reviews.where("review_type = 0").first.rating %>
-        <p>
-          <% num.times do %>
-            <i class="fas fa-star small "></i>
-          <% end %>
-          <% (5-num).times do %>
-            <i class="far fa-star small "></i>
-          <% end %>
-        </p>
-
-        <%# the content  %>
-        <p>"<%= booking.reviews.where("review_type = 0").first.contents %>"</p>
-=======
   <div class="tab-card">
     <h3>REVIEWS GIVEN <i class="fas fa-paper-plane"></i></h3>
       <% if @user.reviews.last %>
@@ -183,7 +154,6 @@
     <h3>REVIEWS RECEIVED <i class="fas fa-mail-bulk"></i></h3>
     <% if @user.reviews_as_owner.last %>
       <% @user.reviews_as_owner.each do |review| %>
->>>>>>> master
         <div class="tab-content-separator"></div>
 
         <%# the providers review  %>
