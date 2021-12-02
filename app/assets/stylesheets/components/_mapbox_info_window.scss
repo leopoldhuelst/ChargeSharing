@@ -20,6 +20,13 @@
   font-size: 16px;
 }
 
+.selected {
+  // background-color: rgb(154, 233, 154);
+  // border-radius: 15px;
+  // padding: 16px;
+  background-image: asset_url('bolt8.png') !important;
+}
+
 .info-window-text h3 {
   color: $default-red;
   font-size: 22px;
