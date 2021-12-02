@@ -10,6 +10,13 @@
     <div class="tab-content-separator"></div>
     <h3>Cost </h3>
     <p><%= @review.booking.cost %>€</p>
+    <div id="favourite-button">
+      <% if current_user.favorited?(@booking.plug) %>
+        <p>Already in favourites</p>
+      <% else %>
+        <%= link_to "Add to favourites", add_favourites_path(@booking) %>
+      <% end %>
+    </div>
     <button id="review-button" data-new-review-target="tab">Write Review + <i class="far fa-keyboard"></i></button>
     <div id="add-review" class="d-none" data-new-review-target="form">
       <%= simple_form_for [ @booking, @review ] do |f| %>
