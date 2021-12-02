@@ -20,7 +20,7 @@ export default class extends Controller {
     this.secondsValue += 1
     this.costValue = this.secondsValue * (this.costPerMinValue / 900)
     this.timeTarget.innerText = this.formatTime(this.secondsValue)
-    this.costTarget.innerText = `$${String(this.costValue.toFixed(2))}`
+    this.costTarget.innerText = `${String(this.costValue.toFixed(2))}€`
     if (this.costValue < 0.50) {
       this.fakebuttonTarget.innerText = `${50 - (this.costValue * 100).toFixed(0)} cents left until you can stop booking`
     } else {

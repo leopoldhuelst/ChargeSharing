@@ -65,7 +65,7 @@ class BookingsController < ApplicationController
     begin
       intent = Stripe::PaymentIntent.create({
         amount: (@booking.cost * 100).to_i,
-        currency: 'usd',
+        currency: 'eur',
         customer: current_user.customer_id,
         payment_method: payment_id,
         error_on_requires_action: true,
